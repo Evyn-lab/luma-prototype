@@ -67,6 +67,15 @@ details p{margin-top:8px; font-size:13.5px; color:var(--muted)}
 .screen nav .nav-here{display:block; padding:10px 4px; color:var(--ink); text-decoration:none; font-size:13px}
 .screen nav [aria-current]{background:var(--block); font-weight:600}
 footer{border-bottom:none}
+
+/* Вкладки прилипают к низу экрана.
+   Правило «содержимое обязано влезать в 956 px» появилось из верной находки — нижняя
+   навигация уходила за край, — но вывод был неверный: на телефоне длинный экран
+   прокручивается, а таб-бар остаётся. Пока правило стояло, экран-хаб «Моё» приходилось
+   бы урезать до неузнаваемости. Требование теперь другое и точнее: вкладки видны всегда. */
+.screen nav[data-zone="Глобальная навигация"]{
+  position:sticky; bottom:0; background:var(--page); box-shadow:0 -1px 0 var(--line);
+}
 /* --- состояния: действия-выходы и серые заглушки --- */
 /* Пять ветвей развилки на странице ожидания: плотным столбцом, иначе экран телефона
    не вмещает содержимое и нижняя навигация уходит за край. */
@@ -269,7 +278,16 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   </details>
   </details>
   <details class="sec-d">
-    <summary class="sec">ГРАНИЦА <span class="cnt">15</span></summary>
+    <summary class="sec">ГРАНИЦА <span class="cnt">19</span></summary>
+  <details class="scr">
+    <summary>Моё <span class="cnt">4</span></summary>
+    <ul>
+      <li class="st"><a href="profile.html">успех · всё подключено</a></li>
+      <li class="st"><a href="profile-empty.html">пусто · первый день</a></li>
+      <li class="st"><a href="profile-error.html">ошибка · не сохранилось</a></li>
+      <li class="st"><a href="profile-loading.html">ожидание · сохраняем</a></li>
+    </ul>
+  </details>
   <details class="scr">
     <summary>Что я разрешил <span class="cnt">6</span></summary>
     <ul>
@@ -394,7 +412,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     <ul>
       <li><a href="today.html">Сегодня</a></li>
       <li><span class="nav-here" aria-current="page">Неделя</span></li>
-      <li><a href="permissions.html">Моё</a></li>
+      <li><a href="profile.html">Моё</a></li>
     </ul>
   </nav>
 

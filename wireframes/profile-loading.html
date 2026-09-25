@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Вайрфрейм · Выгрузка и удаление данных · успех</title>
+<title>Вайрфрейм · Моё · ожидание</title>
 <style>
 /* Вайрфрейм: только структура. Пять значений серого из _conventions.md.
    Ни цвета (везде R=G=B), ни шрифтов, ни иконок, ни теней, ни скруглений. */
@@ -238,13 +238,13 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
 <nav class="wf-path" aria-label="Путь по потоку граница и данные">
   <b>ПУТЬ · ГРАНИЦА И ДАННЫЕ</b>
   <ol>
-    <li><a href="profile.html"><span class="n">1</span> Моё</a></li>
+    <li class="here"><a href="profile.html" aria-current="step"><span class="n">1</span> Моё</a></li>
     <li><a href="permissions.html"><span class="n">2</span> Границы</a></li>
-    <li class="here"><a href="export.html" aria-current="step"><span class="n">3</span> Забрать или стереть</a></li>
+    <li><a href="export.html"><span class="n">3</span> Забрать или стереть</a></li>
     <li><a href="export-gone.html"><span class="n">4</span> Аккаунта нет</a></li>
   </ol>
-  <p class="wf-steps"><a class="step-prev" href="permissions.html">← шаг 2 · Границы</a> <a class="step-next" href="export-gone.html">шаг 4 · Аккаунта нет →</a></p>
-  <p class="wf-here">Шаг 3 из 4 · узел <code>Export</code></p>
+  <p class="wf-steps"><a class="step-next" href="permissions.html">шаг 2 · Границы →</a></p>
+  <p class="wf-here">Шаг 1 из 4 · узел <code>My</code></p>
 </nav>
   <b>ЭКРАНЫ ПРОДУКТА · 7 <a class="all" href="../index.html">все 38 одним листом</a></b>
   <details class="sec-d">
@@ -276,15 +276,15 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     </ul>
   </details>
   </details>
-  <details class="sec-d">
+  <details class="sec-d" open>
     <summary class="sec">ГРАНИЦА <span class="cnt">19</span></summary>
-  <details class="scr">
+  <details class="scr" open>
     <summary>Моё <span class="cnt">4</span></summary>
     <ul>
       <li class="st"><a href="profile.html">успех · всё подключено</a></li>
       <li class="st"><a href="profile-empty.html">пусто · первый день</a></li>
       <li class="st"><a href="profile-error.html">ошибка · не сохранилось</a></li>
-      <li class="st"><a href="profile-loading.html">ожидание · сохраняем</a></li>
+      <li class="st"><a href="profile-loading.html" aria-current="page">ожидание · сохраняем</a></li>
     </ul>
   </details>
   <details class="scr">
@@ -318,12 +318,12 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     </ul>
   </details>
   </details>
-  <details class="sec-d" open>
+  <details class="sec-d">
     <summary class="sec">ОБЯЗАННОСТЬ <span class="cnt">8</span></summary>
-  <details class="scr" open>
+  <details class="scr">
     <summary>Выгрузка и удаление данных <span class="cnt">8</span></summary>
     <ul>
-      <li class="st"><a href="export.html" aria-current="page">успех · забрать или стереть</a></li>
+      <li class="st"><a href="export.html">успех · забрать или стереть</a></li>
       <li class="st"><a href="export-done.html">успех · файл на руках</a></li>
       <li class="st"><a href="export-confirm.html">подтверждение · удалить</a></li>
       <li class="st"><a href="export-loading.html">ожидание · готовим файл</a></li>
@@ -353,54 +353,61 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
 
 <p class="wf-note">
   <b>ВАЙРФРЕЙМ</b>
-  Экран <code>Выгрузка и удаление данных</code> · состояние <b style="display:inline">успех · забрать или стереть</b><br>
-  Работа: <b style='display:inline'>Г1</b> — остаться хозяином границы: забрать свои данные или стереть их совсем. Право забрать и право стереть по GDPR — разные, и на экране они разведены<br>
-  Узел потока: <code>Export</code> в «Г1 · остаться хозяином границы» (<code>flows.md</code>)<br>
-  Закрывает шаг: видно оба права сразу и видно, что это разные вещи<br>
-  Выход: «Собрать файл» → <code>export-loading.html</code> · «Удалить всё» → <code>export-confirm.html</code><br>
+  Экран <code>Моё</code> · состояние <b style="display:inline">ожидание · сохраняем настройку</b><br>
+  Работа: <b style='display:inline'>Г1</b> — остаться хозяином границы · <b style='display:inline'>Г5</b> — понимать, чему именно доверяю · <b style='display:inline'>R5</b> — видеть, за что платишь, не заходя в пейволл<br>
+  Узел потока: <code>Saving</code> в «Г1 · остаться хозяином границы» (<code>flows.md</code>)<br>
+  Закрывает шаг: переход: настройка отправлена, ответ ещё не пришёл<br>
+  Выход: «Сохранилось» → <code>profile.html</code> · «Не сохранилось» → <code>profile-error.html</code><br>
   <span class="wf-states">Состояния этого экрана:
-    <a href="export.html" aria-current="page">успех · забрать или стереть</a>
-    <a href="export-done.html">успех · файл на руках</a>
-    <a href="export-confirm.html">подтверждение · удалить</a>
-    <a href="export-loading.html">ожидание · готовим файл</a>
-    <a href="export-deleting.html">ожидание · удаляем</a>
-    <a href="export-error.html">ошибка · не собралась</a>
-    <a href="export-gone.html">конец · аккаунта нет</a>
-    <a href="export-empty.html">пусто · заглушка</a>
+    <a href="profile.html">успех · всё подключено</a>
+    <a href="profile-empty.html">пусто · первый день</a>
+    <a href="profile-error.html">ошибка · не сохранилось</a>
+    <a href="profile-loading.html" aria-current="page">ожидание · сохраняем</a>
   </span>
 </p>
 
 <div class="screen">
 
-  <header data-zone="Шапка" data-action="Понять, что здесь два разных права, а не одно">
-    <h1>Мои данные</h1>
-    <p class="sub">Забрать копию и стереть всё — два разных решения</p>
+  <header data-zone="Шапка" data-action="Понять, чем здесь можно управлять">
+    <h1>Моё</h1>
+    <p class="sub">Сохраняем настройку</p>
   </header>
 
-  <main data-zone="Забрать копию" data-action="Собрать файл со своими данными">
-      <h2>Забрать копию</h2>
-      <p>Соберём файл со всем, что здесь хранится: утренние отметки, занятость
-         календаря по дням, отметки выполнения, недельные объяснения.</p>
-      <details>
-        <summary>Чего в файле не будет</summary>
-        <p>Названий встреч и участников: они не читаются и не хранятся, поэтому
-           и выгружать их нечего.</p>
-      </details>
-      <p class="sub">Копия ничего не меняет и ничего не удаляет.</p>
+  <main data-zone="Что у меня подключено" data-action="Дойти до разрешений, подписки и своих данных">
+    <h2>Аккаунт</h2>
+    <p>anna@example.com</p>
+    <p class="sub">Способ входа не проверен <b style="display:inline">[?]</b></p>
+    <h2>Что впущено и за что вы платите</h2>
+    <p class="sub">Сохранение настройки ничего из этого не меняет: подключения и
+       подписка остаются как были.</p>
+    <ul aria-hidden="true">
+      <li><article><span class="ph ph-1"></span></article></li>
+      <li><article><span class="ph ph-2"></span></article></li>
+    </ul>
   </main>
 
-  <section data-zone="Стереть всё" data-action="Уйти совсем — через отдельное подтверждение">
-      <h2>Стереть всё</h2>
-      <p>Аккаунт и все данные удаляются безвозвратно: вернуть их потом нельзя
-         ни вам, ни нам.</p>
-      <p class="sub">Спросим ещё раз — на отдельном шаге, до удаления.</p>
-      <p><a class="act" href="export-confirm.html">Удалить всё</a></p>
+  <section data-zone="Что настраивается" data-action="Поменять время вопроса о утре или часовой пояс">
+      <h2>Что настраивается</h2>
+      <p class="sub">Сохраняем: часовой пояс — Мадрид</p>
+      <ul aria-hidden="true">
+        <li><article><span class="ph ph-3"></span></article></li>
+      </ul>
+      <details>
+        <summary>Чего здесь нет и почему</summary>
+        <p><b style="display:inline">Уведомлений</b> — их в продукте нет вовсе, настраивать
+           нечего. <b style="display:inline">Языка</b> — пока один, локализация позже.
+           <b style="display:inline">Серий и счёта несделанного</b> — продукт не ведёт
+           такой счёт и не заставляет наверстывать (работа Г3).</p>
+      </details>
   </section>
 
-  <footer data-zone="Действие" data-action="Сделать безопасный шаг этого состояния">
-    <p><a class="act" href="export-loading.html">Собрать файл</a></p>
-    <p class="sub">Удаление стоит выше, в своём блоке, и требует отдельного
-       подтверждения: нажать его вместо этой кнопки нельзя.</p>
+  <footer data-zone="Действие" data-action="Сохранить настройку или выйти из аккаунта">
+    <p class="branches">
+      <a class="act" href="profile.html">Сохранилось</a>
+      <a class="act" href="profile-error.html">Не сохранилось</a>
+    </p>
+    <p class="sub">Обе ветки развилки «сохранилось?» из flows.md. В продукте этот выбор
+       делает не человек.</p>
   </footer>
 
   <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">

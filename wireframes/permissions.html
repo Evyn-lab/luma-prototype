@@ -67,6 +67,15 @@ details p{margin-top:8px; font-size:13.5px; color:var(--muted)}
 .screen nav .nav-here{display:block; padding:10px 4px; color:var(--ink); text-decoration:none; font-size:13px}
 .screen nav [aria-current]{background:var(--block); font-weight:600}
 footer{border-bottom:none}
+
+/* Вкладки прилипают к низу экрана.
+   Правило «содержимое обязано влезать в 956 px» появилось из верной находки — нижняя
+   навигация уходила за край, — но вывод был неверный: на телефоне длинный экран
+   прокручивается, а таб-бар остаётся. Пока правило стояло, экран-хаб «Моё» приходилось
+   бы урезать до неузнаваемости. Требование теперь другое и точнее: вкладки видны всегда. */
+.screen nav[data-zone="Глобальная навигация"]{
+  position:sticky; bottom:0; background:var(--page); box-shadow:0 -1px 0 var(--line);
+}
 /* --- состояния: действия-выходы и серые заглушки --- */
 /* Пять ветвей развилки на странице ожидания: плотным столбцом, иначе экран телефона
    не вмещает содержимое и нижняя навигация уходит за край. */
@@ -268,7 +277,16 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   </details>
   </details>
   <details class="sec-d" open>
-    <summary class="sec">ГРАНИЦА <span class="cnt">15</span></summary>
+    <summary class="sec">ГРАНИЦА <span class="cnt">19</span></summary>
+  <details class="scr">
+    <summary>Моё <span class="cnt">4</span></summary>
+    <ul>
+      <li class="st"><a href="profile.html">успех · всё подключено</a></li>
+      <li class="st"><a href="profile-empty.html">пусто · первый день</a></li>
+      <li class="st"><a href="profile-error.html">ошибка · не сохранилось</a></li>
+      <li class="st"><a href="profile-loading.html">ожидание · сохраняем</a></li>
+    </ul>
+  </details>
   <details class="scr" open>
     <summary>Что я разрешил <span class="cnt">6</span></summary>
     <ul>
@@ -339,7 +357,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   Работа: <b style='display:inline'>Г1</b> — остаться хозяином границы · участвует в <b style='display:inline'>главной работе</b>: без календаря день нечем взвесить<br>
   Узел потока: <code>Connected</code> в «Главная работа» (<code>flows.md</code>)<br>
   Закрывает шаг: границу видно и ей можно управлять; вес дня снова считается<br>
-  Выход: «Вернуться к списку» → <code>today-loading.html</code> · «Отозвать разрешение» → <code>permissions-revoked.html</code> · «Подписка и оплата» → <code>access.html</code> · «Забрать или стереть данные» → <code>export.html</code><br>
+  Выход: «Вернуться к списку» → <code>today-loading.html</code> · «Отозвать разрешение» → <code>permissions-revoked.html</code> · «Вернуться в «Моё»» → <code>profile.html</code><br>
   <span class="wf-states">Состояния этого экрана:
     <a href="permissions.html" aria-current="page">успех</a>
     <a href="permissions-empty.html">пусто</a>
@@ -390,10 +408,9 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   <footer data-zone="Действие" data-action="Вернуться к списку на сегодня">
     <p class="branches">
       <a class="act" href="today-loading.html">Вернуться к списку</a>
-      <a class="act" href="access.html">Подписка и оплата</a>
-      <a class="act" href="export.html">Забрать или стереть данные</a>
+      <a class="act" href="profile.html">Вернуться в «Моё»</a>
     </p>
-    <p class="sub">Границы, деньги и свои данные — в одном месте.</p>
+    <p class="sub">Подписка и свои данные — в «Моё»: этот экран отвечает за разрешения.</p>
   </footer>
 
   <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">

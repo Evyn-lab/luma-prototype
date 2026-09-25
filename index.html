@@ -221,7 +221,16 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
   </details>
   </details>
   <details class="sec-d" open>
-    <summary class="sec">ГРАНИЦА <span class="cnt">15</span></summary>
+    <summary class="sec">ГРАНИЦА <span class="cnt">19</span></summary>
+  <details class="scr" open>
+    <summary>Моё <span class="cnt">4</span></summary>
+    <ul>
+      <li class="st"><a href="wireframes/profile.html">успех · всё подключено</a></li>
+      <li class="st"><a href="wireframes/profile-empty.html">пусто · первый день</a></li>
+      <li class="st"><a href="wireframes/profile-error.html">ошибка · не сохранилось</a></li>
+      <li class="st"><a href="wireframes/profile-loading.html">ожидание · сохраняем</a></li>
+    </ul>
+  </details>
   <details class="scr" open>
     <summary>Что я разрешил <span class="cnt">6</span></summary>
     <ul>
@@ -283,16 +292,16 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
   </details>
 </nav>
 
-<h1>Прототип Luma · 40 страниц</h1>
+<h1>Прототип Luma · 44 страниц</h1>
 <p class="lead">Все состояния всех семи экранов <code>sitemap.md</code>. Клик по макету —
    или по состоянию в панели слева — открывает страницу целиком: с той же панелью,
    переключателем состояний и полосой пути по потоку.</p>
 
-<p class="jumps"><a class="jump" href="#today">Сегодня <span class="cnt">6</span></a><a class="jump" href="#week">Недельное объяснение <span class="cnt">7</span></a><a class="jump" href="#permissions">Что я разрешил <span class="cnt">6</span></a><a class="jump" href="#access">Доступ <span class="cnt">8</span></a><a class="jump" href="#payment">Экран оплаты · внешний <span class="cnt">1</span></a><a class="jump" href="#export">Выгрузка и удаление данных <span class="cnt">8</span></a><a class="jump" href="#consent">Зачем это и что я разрешаю <span class="cnt">4</span></a></p>
+<p class="jumps"><a class="jump" href="#today">Сегодня <span class="cnt">6</span></a><a class="jump" href="#week">Недельное объяснение <span class="cnt">7</span></a><a class="jump" href="#profile">Моё <span class="cnt">4</span></a><a class="jump" href="#permissions">Что я разрешил <span class="cnt">6</span></a><a class="jump" href="#access">Доступ <span class="cnt">8</span></a><a class="jump" href="#payment">Экран оплаты · внешний <span class="cnt">1</span></a><a class="jump" href="#export">Выгрузка и удаление данных <span class="cnt">8</span></a><a class="jump" href="#consent">Зачем это и что я разрешаю <span class="cnt">4</span></a></p>
 
 <div class="note">
   <b>Потоки продукта</b>
-  <ul><li><b>ГЛАВНЫЙ ПОТОК</b> — Вход → Ожидание → Список → Границы</li><li><b>НЕДЕЛЯ И ОПЛАТА</b> — Ожидание → Пейволл → Доступ → Оплата → Объяснение</li><li><b>ГРАНИЦА И ДАННЫЕ</b> — Границы → Забрать или стереть → Аккаунта нет</li></ul>
+  <ul><li><b>ГЛАВНЫЙ ПОТОК</b> — Вход → Ожидание → Список → Границы</li><li><b>НЕДЕЛЯ И ОПЛАТА</b> — Ожидание → Пейволл → Доступ → Оплата → Объяснение</li><li><b>ГРАНИЦА И ДАННЫЕ</b> — Моё → Границы → Забрать или стереть → Аккаунта нет</li></ul>
 </div>
 
 <h2>УТРО</h2>
@@ -356,6 +365,25 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
   </figure>
 </div>
 <h2>ГРАНИЦА</h2>
+<h3 id="profile">Моё <span class="cnt">4</span><span class="flow">поток · граница и данные</span></h3>
+<div class="row">
+  <figure>
+    <a class="tile" href="wireframes/profile.html" id="profile"><iframe src="wireframes/profile.html" loading="lazy" title="Моё · успех · всё подключено" tabindex="-1" aria-hidden="true"></iframe></a>
+    <figcaption><b>успех · всё подключено</b><span class="file">profile.html</span></figcaption>
+  </figure>
+  <figure>
+    <a class="tile" href="wireframes/profile-empty.html" id="profile-empty"><iframe src="wireframes/profile-empty.html" loading="lazy" title="Моё · пусто · первый день" tabindex="-1" aria-hidden="true"></iframe></a>
+    <figcaption><b>пусто · первый день</b><span class="file">profile-empty.html</span></figcaption>
+  </figure>
+  <figure>
+    <a class="tile" href="wireframes/profile-error.html" id="profile-error"><iframe src="wireframes/profile-error.html" loading="lazy" title="Моё · ошибка · не сохранилось" tabindex="-1" aria-hidden="true"></iframe></a>
+    <figcaption><b>ошибка · не сохранилось</b><span class="file">profile-error.html</span></figcaption>
+  </figure>
+  <figure>
+    <a class="tile" href="wireframes/profile-loading.html" id="profile-loading"><iframe src="wireframes/profile-loading.html" loading="lazy" title="Моё · ожидание · сохраняем" tabindex="-1" aria-hidden="true"></iframe></a>
+    <figcaption><b>ожидание · сохраняем</b><span class="file">profile-loading.html</span></figcaption>
+  </figure>
+</div>
 <h3 id="permissions">Что я разрешил <span class="cnt">6</span><span class="flow">поток · главный поток</span></h3>
 <div class="row">
   <figure>
