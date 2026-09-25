@@ -339,7 +339,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   Работа: <b style='display:inline'>Г1</b> — остаться хозяином границы · участвует в <b style='display:inline'>главной работе</b>: без календаря день нечем взвесить<br>
   Узел потока: <code>Connected</code> в «Главная работа» (<code>flows.md</code>)<br>
   Закрывает шаг: границу видно и ей можно управлять; вес дня снова считается<br>
-  Выход: «Вернуться к списку» → <code>today-loading.html</code> · «Отозвать разрешение» → <code>permissions-revoked.html</code> · «Забрать или стереть данные» → <code>export.html</code><br>
+  Выход: «Вернуться к списку» → <code>today-loading.html</code> · «Отозвать разрешение» → <code>permissions-revoked.html</code> · «Подписка и оплата» → <code>access.html</code> · «Забрать или стереть данные» → <code>export.html</code><br>
   <span class="wf-states">Состояния этого экрана:
     <a href="permissions.html" aria-current="page">успех</a>
     <a href="permissions-empty.html">пусто</a>
@@ -375,7 +375,6 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
           <span class="sub">Не разрешено — паттерны не строятся</span></span>
       </label></article></li>
     </ul>
-    <p class="sub">Сбор прекращается сразу, и видно, что перестало собираться.</p>
     <p><a class="act" href="permissions-revoked.html">Отозвать разрешение</a></p>
   </main>
 
@@ -389,10 +388,12 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   </section>
 
   <footer data-zone="Действие" data-action="Вернуться к списку на сегодня">
-    <p>
+    <p class="branches">
       <a class="act" href="today-loading.html">Вернуться к списку</a>
+      <a class="act" href="access.html">Подписка и оплата</a>
       <a class="act" href="export.html">Забрать или стереть данные</a>
     </p>
+    <p class="sub">Границы, деньги и свои данные — в одном месте.</p>
   </footer>
 
   <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">
