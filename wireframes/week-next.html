@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Вайрфрейм · Доступ · ожидание</title>
+<title>Вайрфрейм · Недельное объяснение · следующая неделя</title>
 <style>
 /* Вайрфрейм: только структура. Пять значений серого из _conventions.md.
    Ни цвета (везде R=G=B), ни шрифтов, ни иконок, ни теней, ни скруглений. */
@@ -242,12 +242,12 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   <ol>
     <li><a href="week-loading.html"><span class="n">1</span> Ожидание</a></li>
     <li><a href="week-locked.html"><span class="n">2</span> Пейволл</a></li>
-    <li class="here"><a href="access.html" aria-current="step"><span class="n">3</span> Доступ</a></li>
+    <li><a href="access.html"><span class="n">3</span> Доступ</a></li>
     <li><a href="payment.html"><span class="n">4</span> Оплата</a></li>
-    <li><a href="week.html"><span class="n">5</span> Объяснение</a></li>
+    <li class="here"><a href="week.html" aria-current="step"><span class="n">5</span> Объяснение</a></li>
   </ol>
-  <p class="wf-steps"><a class="step-prev" href="week-locked.html">← шаг 2 · Пейволл</a> <a class="step-next" href="payment.html">шаг 4 · Оплата →</a></p>
-  <p class="wf-here">Шаг 3 из 5 · узел <code>Access</code></p>
+  <p class="wf-steps"><a class="step-prev" href="payment.html">← шаг 4 · Оплата</a></p>
+  <p class="wf-here">Шаг 5 из 5 · узел <code>Shown</code></p>
 </nav>
   <b>ЭКРАНЫ ПРОДУКТА · 8 <a class="all" href="../index.html">все 45 одним листом</a></b>
   <details class="sec-d">
@@ -264,13 +264,13 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     </ul>
   </details>
   </details>
-  <details class="sec-d">
+  <details class="sec-d" open>
     <summary class="sec">НЕДЕЛЯ <span class="cnt">8</span></summary>
-  <details class="scr">
+  <details class="scr" open>
     <summary><a href="week.html">Недельное объяснение</a> <span class="cnt">8</span></summary>
     <ul>
       <li class="st"><a href="week.html">успех · связи показаны</a></li>
-      <li class="st"><a href="week-next.html">вариант Б · след. неделя</a></li>
+      <li class="st"><a href="week-next.html" aria-current="page">вариант Б · след. неделя</a></li>
       <li class="st"><a href="week-locked.html">успех · закрыто оплатой</a></li>
       <li class="st"><a href="week-known.html">успех · «и так знал»</a></li>
       <li class="st"><a href="week-few.html">пусто · дней мало</a></li>
@@ -280,7 +280,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     </ul>
   </details>
   </details>
-  <details class="sec-d" open>
+  <details class="sec-d">
     <summary class="sec">ГРАНИЦА <span class="cnt">19</span></summary>
   <details class="scr">
     <summary><a href="profile.html">Моё</a> <span class="cnt">4</span></summary>
@@ -302,14 +302,14 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
       <li class="st"><a href="permissions-loading.html">ожидание · провайдер</a></li>
     </ul>
   </details>
-  <details class="scr" open>
+  <details class="scr">
     <summary><a href="access.html">Доступ</a> <span class="cnt">8</span></summary>
     <ul>
       <li class="st"><a href="access.html">успех · цена</a></li>
       <li class="st"><a href="access-paid.html">успех · оплачено</a></li>
       <li class="st"><a href="access-soon.html">пусто · объяснения нет</a></li>
       <li class="st"><a href="access-error.html">ошибка · не прошла</a></li>
-      <li class="st"><a href="access-loading.html" aria-current="page">ожидание · обрабатываем</a></li>
+      <li class="st"><a href="access-loading.html">ожидание · обрабатываем</a></li>
       <li class="st"><a href="access-plan.html">тариф · период и отмена</a></li>
       <li class="st"><a href="access-cancelled.html">подписка отменена</a></li>
       <li class="st"><a href="access-empty.html">пусто · заглушка</a></li>
@@ -357,62 +357,82 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
 
 <p class="wf-note">
   <b>ВАЙРФРЕЙМ</b>
-  Экран <code>Доступ</code> · состояние <b style="display:inline">ожидание · оплата обрабатывается</b><br>
-  Работа: <b style='display:inline'>R5</b> — понять, работает ли это для меня, не потратив недели и деньги на ещё одно разочарование · участвует <b style='display:inline'>R4</b>: доступ существует только ради недельного объяснения<br>
-  Узел потока: <code>Processing</code> в «R5 · решить, стоит ли это моего времени и денег» (<code>flows.md</code>)<br>
-  Закрывает шаг: переход: человек вернулся с экрана провайдера, ответ ещё не пришёл<br>
-  Выход: «Оплата прошла» → <code>access-paid.html</code> · «Оплата не прошла» → <code>access-error.html</code><br>
+  Экран <code>Недельное объяснение</code> · состояние <b style="display:inline">вариант Б · что будет на следующей неделе</b><br>
+  Работа: <b style='display:inline'>R4</b> — увидеть, что отличает хорошие дни от плохих · <b style='display:inline'>R5</b> — понять, стоит ли это времени и денег · <b style='display:inline'>S1</b> — так живут и другие, дело не в несостоятельности · <b style='display:inline'>E1</b> — опора, а не вердикт · <b style='display:inline'>Г5</b> — понимать, чему именно доверяю<br>
+  Узел потока: <code>Next</code> в «R4 · понять, что влияет на мои дни» (<code>flows.md</code>)<br>
+  Закрывает шаг: R3 на горизонте недели: тяжёлые дни видны заранее, и от них можно уменьшить ожидания до того, как они наступили<br>
+  Выход: «Уменьшить ожидания от этих дней» → <code>today-heavy.html</code> · «Вернуться к прошлой неделе» → <code>week.html</code><br>
   <span class="wf-states">Состояния этого экрана:
-    <a href="access.html">успех · цена</a>
-    <a href="access-paid.html">успех · оплачено</a>
-    <a href="access-soon.html">пусто · объяснения нет</a>
-    <a href="access-error.html">ошибка · не прошла</a>
-    <a href="access-loading.html" aria-current="page">ожидание · обрабатываем</a>
-    <a href="access-plan.html">тариф · период и отмена</a>
-    <a href="access-cancelled.html">подписка отменена</a>
-    <a href="access-empty.html">пусто · заглушка</a>
+    <a href="week.html">успех · связи показаны</a>
+    <a href="week-next.html" aria-current="page">вариант Б · следующая неделя</a>
+    <a href="week-locked.html">успех · закрыто оплатой</a>
+    <a href="week-known.html">успех · «и так знал»</a>
+    <a href="week-few.html">пусто · дней мало</a>
+    <a href="week-none.html">пусто · связей нет</a>
+    <a href="week-error.html">ошибка · не собрался</a>
+    <a href="week-loading.html">ожидание · ищем связи</a>
   </span>
 </p>
 
 <div class="screen">
 
-  <header data-zone="Шапка" data-action="Понять, о чём здесь решение">
-    <h1>Доступ</h1>
-    <p class="sub">Оплата обрабатывается</p>
+  <header data-zone="Шапка" data-action="Сориентировать: какая неделя и на скольких днях построена">
+    <h1>Неделя</h1>
+    <p class="sub">Следующая: 22–28 сентября</p>
+    <p class="sub">Вариант Б · сравнивается с ретроспективой на интервью
+       (<code>paywall-test.md</code>)</p>
   </header>
 
-  <main data-zone="Цена и что даёт подписка" data-action="Решить, стоит ли это моих денег">
-    <h2>Ждём подтверждения</h2>
-    <p class="sub">Платёжный провайдер подтверждает платёж</p>
-    <ul aria-hidden="true">
-      <li><article><span class="ph ph-1"></span></article></li>
-      <li><article><span class="ph ph-2"></span></article></li>
-    </ul>
-    <p class="sub">Закрывать страницу не нужно. Данные карты у Luma не появляются ни
-       сейчас, ни после подтверждения.</p>
-  </main>
-
-  <section data-zone="Что остаётся бесплатным" data-action="Убедиться, что ежедневный список не отбирают">
-      <h2>Что остаётся бесплатным навсегда</h2>
-      <p>Ежедневный список — бесплатно и навсегда.</p>
-      <p class="sub">Пока идёт оплата, ежедневный список доступен как обычно: он от
-         подписки не зависит.</p>
+  <main>
+    <section data-zone="Найденные связи" data-action="Увидеть, чем хорошие дни отличались от плохих">
+      <h2>Что ломало прошлую неделю</h2>
+      <ul>
+        <li><article>
+          <span class="item-text">Три дня подряд с восемью и более встречами</span>
+          <span class="item-time">вт–чт</span>
+        </article></li>
+      </ul>
+      <h2>Что сработало у вас</h2>
+      <ul>
+        <li><article>
+          <span class="item-text">В дни с паузой после обеда вечер вы отмечали лучше</span>
+          <span class="item-time">5 из 6 раз</span>
+        </article></li>
+      </ul>
+      <p class="sub">«5 из 6 раз» — наблюдение на ваших отметках, а не доказательство.
+         Такого не посчитать по чужим данным: сверять есть с чем только потому, что
+         пункты предлагали мы.</p>
+      <h2>Где обвалится следующая</h2>
+      <ul>
+        <li><article>
+          <span class="item-text">Вторник и четверг — та же картина: 8 и 9 встреч</span>
+          <span class="item-time">уже в календаре</span>
+        </article></li>
+      </ul>
   </section>
 
-  <footer data-zone="Действие" data-action="Оформить подписку или уйти, не заплатив">
-    <p>
-      <a class="act" href="access-paid.html">Оплата прошла</a>
-      <a class="act" href="access-error.html">Оплата не прошла</a>
+    <section data-zone="Строка сравнения" data-action="Снять личную вину: так живут не только вы">
+      <h2>Не только у вас</h2>
+      <p>Дни с восемью и более встречами выжимают 76% людей.</p>
+      <p class="sub">Atlassian, опрос 5 000 человек — дело не в вас лично.</p>
+  </section>
+  </main>
+
+  <footer data-zone="Действие" data-action="Ответить на объяснение или уйти дальше по потоку">
+    <p class="branches">
+      <a class="act" href="today-heavy.html">Уменьшить ожидания от этих дней</a>
+      <a class="act" href="week.html">Вернуться к прошлой неделе</a>
     </p>
-    <p class="sub">Обе ветки развилки «оплата прошла?» из <code>flows.md</code>.
-       В продукте этот выбор делает не человек.</p>
+    <p class="sub">Развилка «уменьшить ожидания заранее?» из flows.md. Это и есть
+       работа R3 на горизонте недели: сейчас она живёт только внутри бесплатного
+       состояния «тяжёлый день».</p>
   </footer>
 
   <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">
     <ul>
       <li><a href="today.html">Сегодня</a></li>
-      <li><a href="week-loading.html">Неделя</a></li>
-      <li><span class="nav-here" aria-current="page">Моё</span></li>
+      <li><span class="nav-here" aria-current="page">Неделя</span></li>
+      <li><a href="profile.html">Моё</a></li>
     </ul>
   </nav>
 
