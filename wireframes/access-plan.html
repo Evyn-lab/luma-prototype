@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="robots" content="noindex">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Вайрфрейм · Что я разрешил · согласие отозвано</title>
+<title>Вайрфрейм · Доступ · тариф</title>
 <style>
 /* Вайрфрейм: только структура. Пять значений серого из _conventions.md.
    Ни цвета (везде R=G=B), ни шрифтов, ни иконок, ни теней, ни скруглений. */
@@ -226,16 +226,17 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   <label><input type="radio" name="vw" id="vw-desktop"> десктоп · 1024</label>
   <p class="wf-desk">Раскладка под десктоп ещё не спроектирована: структура та же, размещение зон изменится (<code>CLAUDE.md</code>).</p>
 </form>
-<nav class="wf-path" aria-label="Путь по потоку главный поток">
-  <b>ПУТЬ · ГЛАВНЫЙ ПОТОК</b>
+<nav class="wf-path" aria-label="Путь по потоку неделя и оплата">
+  <b>ПУТЬ · НЕДЕЛЯ И ОПЛАТА</b>
   <ol>
-    <li><a href="consent.html"><span class="n">1</span> Вход</a></li>
-    <li><a href="today-loading.html"><span class="n">2</span> Ожидание</a></li>
-    <li><a href="today.html"><span class="n">3</span> Список</a></li>
-    <li class="here"><a href="permissions.html" aria-current="step"><span class="n">4</span> Границы</a></li>
+    <li><a href="week-loading.html"><span class="n">1</span> Ожидание</a></li>
+    <li><a href="week-locked.html"><span class="n">2</span> Пейволл</a></li>
+    <li class="here"><a href="access.html" aria-current="step"><span class="n">3</span> Доступ</a></li>
+    <li><a href="payment.html"><span class="n">4</span> Оплата</a></li>
+    <li><a href="week.html"><span class="n">5</span> Объяснение</a></li>
   </ol>
-  <p class="wf-steps"><a class="step-prev" href="today.html">← шаг 3 · Список</a></p>
-  <p class="wf-here">Шаг 4 из 4 · узел <code>Allowed</code></p>
+  <p class="wf-steps"><a class="step-prev" href="week-locked.html">← шаг 2 · Пейволл</a> <a class="step-next" href="payment.html">шаг 4 · Оплата →</a></p>
+  <p class="wf-here">Шаг 3 из 5 · узел <code>Access</code></p>
 </nav>
   <b>ЭКРАНЫ ПРОДУКТА · 7 <a class="all" href="../index.html">все 38 одним листом</a></b>
   <details class="sec-d">
@@ -269,18 +270,18 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   </details>
   <details class="sec-d" open>
     <summary class="sec">ГРАНИЦА <span class="cnt">15</span></summary>
-  <details class="scr" open>
+  <details class="scr">
     <summary>Что я разрешил <span class="cnt">6</span></summary>
     <ul>
       <li class="st"><a href="permissions.html">успех · подключено</a></li>
       <li class="st"><a href="permissions-empty.html">пусто · ничего нет</a></li>
       <li class="st"><a href="permissions-unclear.html">пусто · причина неясна</a></li>
-      <li class="st"><a href="permissions-revoked.html" aria-current="page">согласие отозвано</a></li>
+      <li class="st"><a href="permissions-revoked.html">согласие отозвано</a></li>
       <li class="st"><a href="permissions-error.html">ошибка · доступ не выдан</a></li>
       <li class="st"><a href="permissions-loading.html">ожидание · провайдер</a></li>
     </ul>
   </details>
-  <details class="scr">
+  <details class="scr" open>
     <summary>Доступ <span class="cnt">8</span></summary>
     <ul>
       <li class="st"><a href="access.html">успех · цена</a></li>
@@ -288,7 +289,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
       <li class="st"><a href="access-soon.html">пусто · объяснения нет</a></li>
       <li class="st"><a href="access-error.html">ошибка · не прошла</a></li>
       <li class="st"><a href="access-loading.html">ожидание · обрабатываем</a></li>
-      <li class="st"><a href="access-plan.html">тариф · период и отмена</a></li>
+      <li class="st"><a href="access-plan.html" aria-current="page">тариф · период и отмена</a></li>
       <li class="st"><a href="access-cancelled.html">подписка отменена</a></li>
       <li class="st"><a href="access-empty.html">пусто · заглушка</a></li>
     </ul>
@@ -335,71 +336,78 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
 
 <p class="wf-note">
   <b>ВАЙРФРЕЙМ</b>
-  Экран <code>Что я разрешил</code> · состояние <b style="display:inline">согласие отозвано</b><br>
-  Работа: <b style='display:inline'>Г1</b> — остаться хозяином границы · участвует в <b style='display:inline'>главной работе</b>: без календаря день нечем взвесить<br>
-  Узел потока: <code>Revoke</code> в «Г1 · остаться хозяином границы» (<code>flows.md</code>)<br>
-  Закрывает шаг: работа Г1 закрыта: граница стоит на моих условиях, и видно, что перестало собираться<br>
-  Выход: «Непонятно, что перестало собираться» → <code>permissions-unclear.html</code><br>
+  Экран <code>Доступ</code> · состояние <b style="display:inline">тариф · период и отмена</b><br>
+  Работа: <b style='display:inline'>R5</b> — понять, работает ли это для меня, не потратив недели и деньги на ещё одно разочарование · участвует <b style='display:inline'>R4</b>: доступ существует только ради недельного объяснения<br>
+  Узел потока: <code>Plan</code> в «R5 · решить, стоит ли это моего времени и денег» (<code>flows.md</code>)<br>
+  Закрывает шаг: решение о деньгах можно изменить: период меняется, подписка отменяется<br>
+  Выход: «Сохранить период» → <code>access-paid.html</code> · «Отменить подписку» → <code>access-cancelled.html</code><br>
   <span class="wf-states">Состояния этого экрана:
-    <a href="permissions.html">успех</a>
-    <a href="permissions-empty.html">пусто</a>
-    <a href="permissions-unclear.html">пусто · причина неясна</a>
-    <a href="permissions-revoked.html" aria-current="page">согласие отозвано</a>
-    <a href="permissions-error.html">ошибка</a>
-    <a href="permissions-loading.html">ожидание</a>
+    <a href="access.html">успех · цена</a>
+    <a href="access-paid.html">успех · оплачено</a>
+    <a href="access-soon.html">пусто · объяснения нет</a>
+    <a href="access-error.html">ошибка · не прошла</a>
+    <a href="access-loading.html">ожидание · обрабатываем</a>
+    <a href="access-plan.html" aria-current="page">тариф · период и отмена</a>
+    <a href="access-cancelled.html">подписка отменена</a>
+    <a href="access-empty.html">пусто · заглушка</a>
   </span>
 </p>
 
 <div class="screen">
 
-  <header data-zone="Шапка" data-action="Показать, что подключено сейчас">
-    <h1>Что я разрешил</h1>
-    <p class="sub">Занятость календаря больше не читается</p>
+  <header data-zone="Шапка" data-action="Понять, о чём здесь решение">
+    <h1>Тариф</h1>
+    <p class="sub">Сейчас: годовая подписка</p>
   </header>
 
-  <main data-zone="Разрешения" data-action="Подключить или отозвать по каждой цели">
-    <ul>
-      <li><article><label>
-        <input type="checkbox" name="p-checkin" checked>
-        <span class="item-text">Утренние отметки<br>
-          <span class="sub">Хранятся как раньше — отзыв их не затронул</span></span>
-      </label></article></li>
-      <li><article><label>
-        <input type="checkbox" name="p-calendar">
-        <span class="item-text">Занятость календаря<br>
-          <span class="sub">Отозвано сегодня, сбор прекращён</span></span>
-      </label></article></li>
-      <li><article><label>
-        <input type="checkbox" name="p-weekly">
-        <span class="item-text">Недельное объяснение<br>
-          <span class="sub">Не разрешено — паттерны не строятся</span></span>
-      </label></article></li>
-    </ul>
-    <h2>Что перестало собираться</h2>
-    <p class="sub">Сколько встреч и сколько часов занято. Список на сегодня собирается
-       по-прежнему, но становится общим. Разрешить снова — той же галочкой.</p>
+  <main data-zone="Цена и что даёт подписка" data-action="Решить, стоит ли это моих денег">
+    <h2>Период оплаты</h2>
+    <form>
+      <fieldset>
+        <legend>Что списывать</legend>
+        <ul>
+          <li><article><label>
+              <input type="radio" name="period" value="year" checked>
+              <span class="item-text">Год — €69&ndash;79
+              <span class="sub">Точное число внутри вилки ещё не выбрано [?]</span></span>
+          </label></article></li>
+          <li><article><label>
+              <input type="radio" name="period" value="month">
+              <span class="item-text">Месяц — около €8,99
+              <span class="sub">Месяцами за год дороже, чем годовой подпиской</span></span>
+          </label></article></li>
+        </ul>
+      </fieldset>
+    </form>
+    <p class="sub">Смена периода вступает в силу со следующего списания: доплачивать
+       за текущий не придётся.</p>
   </main>
 
-  <section data-zone="Что именно читается" data-action="Убедиться, что читается только занятость">
-      <h2>Что именно читается</h2>
+  <section data-zone="Что остаётся бесплатным" data-action="Убедиться, что ежедневный список не отбирают">
+      <h2>Что остаётся бесплатным навсегда</h2>
+      <p>Ежедневный список — бесплатно и навсегда.</p>
       <details>
-        <summary>Сейчас из календаря не читается ничего</summary>
-        <p>Пока разрешение было выдано, читалась только занятость: сколько встреч и
-           сколько часов занято. Названия встреч и участники не читались и не
-           сохранялись — ни тогда, ни теперь.</p>
+        <summary>Что будет, если отменить</summary>
+        <p>Доступ к недельному объяснению останется до конца оплаченного периода.
+           Дальше закроется объяснение, а ежедневный список останется. Накопленные
+           отметки не удаляются — вернуться можно там же, где платили в первый раз.</p>
       </details>
   </section>
 
-  <footer data-zone="Действие" data-action="Вернуться к списку на сегодня">
-    <p><a class="act" href="permissions-unclear.html">Непонятно, что перестало собираться</a></p>
-    <p class="sub">Если понятно — уходить никуда не нужно.</p>
+  <footer data-zone="Действие" data-action="Оформить подписку или уйти, не заплатив">
+    <p>
+      <a class="act" href="access-paid.html">Сохранить период</a>
+      <a class="act" href="access-cancelled.html">Отменить подписку</a>
+    </p>
+    <p class="sub">Обе ветки развилки «отменить подписку?» из <code>flows.md</code>.
+       Отмена стоит рядом, а не спрятана в мелкий текст.</p>
   </footer>
 
   <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">
     <ul>
       <li><a href="today.html">Сегодня</a></li>
-      <li><a href="week-loading.html">Неделя</a></li>
-      <li><span class="nav-here" aria-current="page">Моё</span></li>
+      <li><span class="nav-here" aria-current="page">Неделя</span></li>
+      <li><a href="permissions.html">Моё</a></li>
     </ul>
   </nav>
 

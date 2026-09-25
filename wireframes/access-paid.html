@@ -269,7 +269,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   </details>
   </details>
   <details class="sec-d" open>
-    <summary class="sec">ГРАНИЦА <span class="cnt">13</span></summary>
+    <summary class="sec">ГРАНИЦА <span class="cnt">15</span></summary>
   <details class="scr">
     <summary>Что я разрешил <span class="cnt">6</span></summary>
     <ul>
@@ -282,13 +282,15 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     </ul>
   </details>
   <details class="scr" open>
-    <summary>Доступ <span class="cnt">6</span></summary>
+    <summary>Доступ <span class="cnt">8</span></summary>
     <ul>
       <li class="st"><a href="access.html">успех · цена</a></li>
       <li class="st"><a href="access-paid.html" aria-current="page">успех · оплачено</a></li>
       <li class="st"><a href="access-soon.html">пусто · объяснения нет</a></li>
       <li class="st"><a href="access-error.html">ошибка · не прошла</a></li>
       <li class="st"><a href="access-loading.html">ожидание · обрабатываем</a></li>
+      <li class="st"><a href="access-plan.html">тариф · период и отмена</a></li>
+      <li class="st"><a href="access-cancelled.html">подписка отменена</a></li>
       <li class="st"><a href="access-empty.html">пусто · заглушка</a></li>
     </ul>
   </details>
@@ -337,14 +339,16 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   Экран <code>Доступ</code> · состояние <b style="display:inline">успех · оплачено</b><br>
   Работа: <b style='display:inline'>R5</b> — понять, работает ли это для меня, не потратив недели и деньги на ещё одно разочарование · участвует <b style='display:inline'>R4</b>: доступ существует только ради недельного объяснения<br>
   Узел потока: <code>Paid</code> в «R5 · решить, стоит ли это моего времени и денег» (<code>flows.md</code>)<br>
-  Закрывает шаг: доступ открыт: видно, что теперь собирается, и видно, как отказаться<br>
-  Выход: «Открыть недельное объяснение» → <code>week.html</code><br>
+  Закрывает шаг: доступ открыт: видно, что теперь собирается, и отмена не спрятана<br>
+  Выход: «Открыть недельное объяснение» → <code>week.html</code> · «Тариф и отмена» → <code>access-plan.html</code><br>
   <span class="wf-states">Состояния этого экрана:
     <a href="access.html">успех · цена</a>
     <a href="access-paid.html" aria-current="page">успех · оплачено</a>
     <a href="access-soon.html">пусто · объяснения нет</a>
     <a href="access-error.html">ошибка · не прошла</a>
     <a href="access-loading.html">ожидание · обрабатываем</a>
+    <a href="access-plan.html">тариф · период и отмена</a>
+    <a href="access-cancelled.html">подписка отменена</a>
     <a href="access-empty.html">пусто · заглушка</a>
   </span>
 </p>
@@ -374,9 +378,12 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   </section>
 
   <footer data-zone="Действие" data-action="Оформить подписку или уйти, не заплатив">
-    <p><a class="act" href="week.html">Открыть недельное объяснение</a></p>
-    <p class="sub">Оплата прошла — дальше человек идёт туда, за чем платил, а не
-       остаётся на экране про деньги.</p>
+    <p>
+      <a class="act" href="week.html">Открыть недельное объяснение</a>
+      <a class="act" href="access-plan.html">Тариф и отмена</a>
+    </p>
+    <p class="sub">Оплата прошла — дальше человек идёт туда, за чем платил. Тариф и
+       отмена рядом: спрятанная отмена читается как ловушка.</p>
   </footer>
 
   <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">
