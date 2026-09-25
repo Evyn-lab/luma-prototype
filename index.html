@@ -45,6 +45,8 @@ body{padding-left:286px !important;display:flex;justify-content:center;align-ite
   font-size:11.5px;line-height:1.25;
 }
 .wf-tree summary .cnt{float:right;margin-left:6px}
+.wf-tree summary a{display:inline;padding:0;color:inherit;text-decoration:none}
+.wf-tree summary a:hover{text-decoration:underline;background:none}
 .wf-tree summary:hover{background:var(--block)}
 .wf-tree summary .cnt{font-weight:400;color:var(--muted);font-size:11px}
 .wf-tree details[open] > summary{border-bottom:1px dotted var(--line)}
@@ -190,11 +192,11 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
 <body>
 
 <nav class="wf-tree" aria-label="Структура прототипа">
-  <b>ЭКРАНЫ ПРОДУКТА · 7</b>
+  <b>ЭКРАНЫ ПРОДУКТА · 8</b>
   <details class="sec-d" open>
     <summary class="sec">УТРО <span class="cnt">6</span></summary>
   <details class="scr" open>
-    <summary>Сегодня <span class="cnt">6</span></summary>
+    <summary><a href="wireframes/today.html">Сегодня</a> <span class="cnt">6</span></summary>
     <ul>
       <li class="st"><a href="wireframes/today.html">успех · обычный день</a></li>
       <li class="st"><a href="wireframes/today-heavy.html">успех · тяжёлый день</a></li>
@@ -208,7 +210,7 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
   <details class="sec-d" open>
     <summary class="sec">НЕДЕЛЯ <span class="cnt">7</span></summary>
   <details class="scr" open>
-    <summary>Недельное объяснение <span class="cnt">7</span></summary>
+    <summary><a href="wireframes/week.html">Недельное объяснение</a> <span class="cnt">7</span></summary>
     <ul>
       <li class="st"><a href="wireframes/week.html">успех · связи показаны</a></li>
       <li class="st"><a href="wireframes/week-locked.html">успех · закрыто оплатой</a></li>
@@ -223,7 +225,7 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
   <details class="sec-d" open>
     <summary class="sec">ГРАНИЦА <span class="cnt">19</span></summary>
   <details class="scr" open>
-    <summary>Моё <span class="cnt">4</span></summary>
+    <summary><a href="wireframes/profile.html">Моё</a> <span class="cnt">4</span></summary>
     <ul>
       <li class="st"><a href="wireframes/profile.html">успех · всё подключено</a></li>
       <li class="st"><a href="wireframes/profile-empty.html">пусто · первый день</a></li>
@@ -232,7 +234,7 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
     </ul>
   </details>
   <details class="scr" open>
-    <summary>Что я разрешил <span class="cnt">6</span></summary>
+    <summary><a href="wireframes/permissions.html">Что я разрешил</a> <span class="cnt">6</span></summary>
     <ul>
       <li class="st"><a href="wireframes/permissions.html">успех · подключено</a></li>
       <li class="st"><a href="wireframes/permissions-empty.html">пусто · ничего нет</a></li>
@@ -243,7 +245,7 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
     </ul>
   </details>
   <details class="scr" open>
-    <summary>Доступ <span class="cnt">8</span></summary>
+    <summary><a href="wireframes/access.html">Доступ</a> <span class="cnt">8</span></summary>
     <ul>
       <li class="st"><a href="wireframes/access.html">успех · цена</a></li>
       <li class="st"><a href="wireframes/access-paid.html">успех · оплачено</a></li>
@@ -256,7 +258,7 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
     </ul>
   </details>
   <details class="scr" open>
-    <summary>Экран оплаты · внешний <span class="cnt">1</span></summary>
+    <summary><a href="wireframes/payment.html">Экран оплаты · внешний</a> <span class="cnt">1</span></summary>
     <ul>
       <li class="st"><a href="wireframes/payment.html">граница · чужой экран</a></li>
     </ul>
@@ -265,7 +267,7 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
   <details class="sec-d" open>
     <summary class="sec">ОБЯЗАННОСТЬ <span class="cnt">8</span></summary>
   <details class="scr" open>
-    <summary>Выгрузка и удаление данных <span class="cnt">8</span></summary>
+    <summary><a href="wireframes/export.html">Выгрузка и удаление данных</a> <span class="cnt">8</span></summary>
     <ul>
       <li class="st"><a href="wireframes/export.html">успех · забрать или стереть</a></li>
       <li class="st"><a href="wireframes/export-done.html">успех · файл на руках</a></li>
@@ -281,7 +283,7 @@ figcaption .file{display:block;color:var(--muted);font-size:10.5px;margin-top:1p
   <details class="sec-d" open>
     <summary class="sec">ВХОД <span class="cnt">4</span></summary>
   <details class="scr" open>
-    <summary>Зачем это и что я разрешаю <span class="cnt">4</span></summary>
+    <summary><a href="wireframes/consent.html">Зачем это и что я разрешаю</a> <span class="cnt">4</span></summary>
     <ul>
       <li class="st"><a href="wireframes/consent.html">успех · согласие дано</a></li>
       <li class="st"><a href="wireframes/consent-refused.html">отказ · что перестанет</a></li>

@@ -140,6 +140,8 @@ body{padding-left:286px !important;display:flex;justify-content:center;align-ite
   font-size:11.5px;line-height:1.25;
 }
 .wf-tree summary .cnt{float:right;margin-left:6px}
+.wf-tree summary a{display:inline;padding:0;color:inherit;text-decoration:none}
+.wf-tree summary a:hover{text-decoration:underline;background:none}
 .wf-tree summary:hover{background:var(--block)}
 .wf-tree summary .cnt{font-weight:400;color:var(--muted);font-size:11px}
 .wf-tree details[open] > summary{border-bottom:1px dotted var(--line)}
@@ -246,11 +248,11 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   <p class="wf-steps"><a class="step-prev" href="permissions.html">← шаг 2 · Границы</a> <a class="step-next" href="export-gone.html">шаг 4 · Аккаунта нет →</a></p>
   <p class="wf-here">Шаг 3 из 4 · узел <code>Export</code></p>
 </nav>
-  <b>ЭКРАНЫ ПРОДУКТА · 7 <a class="all" href="../index.html">все 38 одним листом</a></b>
+  <b>ЭКРАНЫ ПРОДУКТА · 8 <a class="all" href="../index.html">все 44 одним листом</a></b>
   <details class="sec-d">
     <summary class="sec">УТРО <span class="cnt">6</span></summary>
   <details class="scr">
-    <summary>Сегодня <span class="cnt">6</span></summary>
+    <summary><a href="today.html">Сегодня</a> <span class="cnt">6</span></summary>
     <ul>
       <li class="st"><a href="today.html">успех · обычный день</a></li>
       <li class="st"><a href="today-heavy.html">успех · тяжёлый день</a></li>
@@ -264,7 +266,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   <details class="sec-d">
     <summary class="sec">НЕДЕЛЯ <span class="cnt">7</span></summary>
   <details class="scr">
-    <summary>Недельное объяснение <span class="cnt">7</span></summary>
+    <summary><a href="week.html">Недельное объяснение</a> <span class="cnt">7</span></summary>
     <ul>
       <li class="st"><a href="week.html">успех · связи показаны</a></li>
       <li class="st"><a href="week-locked.html">успех · закрыто оплатой</a></li>
@@ -279,7 +281,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   <details class="sec-d">
     <summary class="sec">ГРАНИЦА <span class="cnt">19</span></summary>
   <details class="scr">
-    <summary>Моё <span class="cnt">4</span></summary>
+    <summary><a href="profile.html">Моё</a> <span class="cnt">4</span></summary>
     <ul>
       <li class="st"><a href="profile.html">успех · всё подключено</a></li>
       <li class="st"><a href="profile-empty.html">пусто · первый день</a></li>
@@ -288,7 +290,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     </ul>
   </details>
   <details class="scr">
-    <summary>Что я разрешил <span class="cnt">6</span></summary>
+    <summary><a href="permissions.html">Что я разрешил</a> <span class="cnt">6</span></summary>
     <ul>
       <li class="st"><a href="permissions.html">успех · подключено</a></li>
       <li class="st"><a href="permissions-empty.html">пусто · ничего нет</a></li>
@@ -299,7 +301,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     </ul>
   </details>
   <details class="scr">
-    <summary>Доступ <span class="cnt">8</span></summary>
+    <summary><a href="access.html">Доступ</a> <span class="cnt">8</span></summary>
     <ul>
       <li class="st"><a href="access.html">успех · цена</a></li>
       <li class="st"><a href="access-paid.html">успех · оплачено</a></li>
@@ -312,7 +314,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     </ul>
   </details>
   <details class="scr">
-    <summary>Экран оплаты · внешний <span class="cnt">1</span></summary>
+    <summary><a href="payment.html">Экран оплаты · внешний</a> <span class="cnt">1</span></summary>
     <ul>
       <li class="st"><a href="payment.html">граница · чужой экран</a></li>
     </ul>
@@ -321,7 +323,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   <details class="sec-d" open>
     <summary class="sec">ОБЯЗАННОСТЬ <span class="cnt">8</span></summary>
   <details class="scr" open>
-    <summary>Выгрузка и удаление данных <span class="cnt">8</span></summary>
+    <summary><a href="export.html">Выгрузка и удаление данных</a> <span class="cnt">8</span></summary>
     <ul>
       <li class="st"><a href="export.html" aria-current="page">успех · забрать или стереть</a></li>
       <li class="st"><a href="export-done.html">успех · файл на руках</a></li>
@@ -337,7 +339,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   <details class="sec-d">
     <summary class="sec">ВХОД <span class="cnt">4</span></summary>
   <details class="scr">
-    <summary>Зачем это и что я разрешаю <span class="cnt">4</span></summary>
+    <summary><a href="consent.html">Зачем это и что я разрешаю</a> <span class="cnt">4</span></summary>
     <ul>
       <li class="st"><a href="consent.html">успех · согласие дано</a></li>
       <li class="st"><a href="consent-refused.html">отказ · что перестанет</a></li>
