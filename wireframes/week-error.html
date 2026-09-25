@@ -1,0 +1,392 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Вайрфрейм · Недельное объяснение · ошибка</title>
+<style>
+/* Вайрфрейм: только структура. Пять значений серого из _conventions.md.
+   Ни цвета (везде R=G=B), ни шрифтов, ни иконок, ни теней, ни скруглений. */
+:root{
+  --page:#ffffff; --block:#f4f4f4; --line:#d8d8d8; --muted:#8a8a8a; --ink:#2b2b2b;
+  --w:440px;   /* iPhone Pro Max: вьюпорт 440 x 956 CSS-px */
+  --h:956px;   /* высота устройства — прототип скроллится внутри, как телефон */
+}
+*{box-sizing:border-box}
+body{
+  margin:0; background:var(--muted); color:var(--ink);
+  font-family:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  font-size:15px; line-height:1.45;
+  padding:24px 16px 60px;
+}
+
+/* аннотация вайрфрейма — это не продукт, поэтому вынесена наружу и помечена */
+.wf-note{
+  width:var(--w); background:var(--page); border:1px dashed var(--ink);
+  padding:12px 14px; margin-bottom:18px; font-size:12.5px; line-height:1.5;
+}
+.wf-note b{display:block; margin-bottom:4px; letter-spacing:.06em; font-size:11px}
+.wf-note code{background:var(--block); padding:1px 4px}
+
+.screen{width:var(--w); background:var(--page); border:1px solid var(--ink)}
+
+/* подпись зоны и её главного действия — из data-атрибутов, разметка не засоряется */
+[data-zone]{position:relative; border-bottom:1px solid var(--line); padding:14px}
+[data-zone]::before{
+  content:"ЗОНА · " attr(data-zone) "  —  ГЛАВНОЕ ДЕЙСТВИЕ: " attr(data-action);
+  display:block; font-size:10.5px; letter-spacing:.04em; color:var(--muted);
+  border-bottom:1px dotted var(--line); padding-bottom:6px; margin-bottom:10px;
+}
+
+h1{font-size:20px; margin:0 0 2px; font-weight:600}
+h2{font-size:15px; margin:0 0 10px; font-weight:600}
+p{margin:0 0 6px}
+.sub{color:var(--muted); font-size:13px}
+
+ul{list-style:none; margin:0; padding:0}
+li{border:1px solid var(--line); margin-bottom:8px}
+article{display:flex; gap:10px; align-items:flex-start; padding:10px}
+article label{display:flex; gap:10px; align-items:flex-start; cursor:pointer; width:100%}
+article input{margin:2px 0 0; width:18px; height:18px}
+.item-text{flex:1}
+.item-time{color:var(--muted); font-size:12.5px; white-space:nowrap}
+.done .item-text{color:var(--muted)}
+
+button{
+  font:inherit; font-size:14px; color:var(--ink); background:var(--block);
+  border:1px solid var(--ink); padding:9px 14px; cursor:pointer; width:100%;
+}
+details{border:1px solid var(--line); padding:10px}
+summary{cursor:pointer; font-size:14px}
+details p{margin-top:8px; font-size:13.5px; color:var(--muted)}
+
+.screen nav ul{display:flex; gap:0}
+.screen nav li{flex:1; margin:0; border:1px solid var(--line); text-align:center}
+.screen nav a,
+.screen nav .nav-here{display:block; padding:10px 4px; color:var(--ink); text-decoration:none; font-size:13px}
+.screen nav [aria-current]{background:var(--block); font-weight:600}
+footer{border-bottom:none}
+/* --- состояния: действия-выходы и серые заглушки --- */
+/* Пять ветвей развилки на странице ожидания: плотным столбцом, иначе экран телефона
+   не вмещает содержимое и нижняя навигация уходит за край. */
+.branches{display:flex; flex-wrap:wrap; gap:6px}
+.branches .act{font-size:12.5px; padding:5px 9px}
+.act{
+  display:inline-block;border:1px solid var(--ink);background:var(--block);
+  padding:9px 14px;margin:6px 8px 0 0;color:var(--ink);text-decoration:none;font-size:14px;
+}
+.act:hover{text-decoration:underline}
+.act.todo{color:var(--muted);border-style:dashed;background:var(--page)}
+.act.todo::after{content:" · страницы ещё нет";font-size:11px}
+.wf-states{display:block;margin-top:7px;border-top:1px dotted var(--line);padding-top:6px}
+.wf-states a{color:var(--ink);margin-right:9px}
+.wf-states .none{color:var(--muted);margin-right:9px}
+.ph{display:block;height:15px;background:var(--line)}
+.ph-1{width:82%}.ph-2{width:64%}.ph-3{width:73%}.ph-4{width:48%}
+
+.wf-states{display:block;margin-top:7px;border-top:1px dotted var(--line);padding-top:6px}
+.wf-states a{color:var(--ink);margin-right:9px}
+.wf-states a[aria-current]{font-weight:600}
+</style>
+<!--WF-NAV-CSS-->
+<style>
+/* --- навигационное дерево вайрфреймов --- */
+/* Панель прижата к левому краю и не участвует в центрировании, поэтому прототип
+   стоит по центру оставшегося места, а не вместе с панелью. */
+body{padding-left:286px !important;display:flex;justify-content:center;align-items:flex-start}
+.wf-tree{
+  width:246px;position:fixed;left:16px;top:24px;max-height:calc(100vh - 48px);overflow-y:auto;
+  background:var(--page);border:1px solid var(--ink);padding:14px 12px;
+  font-size:12.5px;line-height:1.4;
+}
+.wf-tree > b{
+  display:block;font-size:10.5px;letter-spacing:.06em;color:var(--muted);
+  border-bottom:1px dotted var(--line);padding-bottom:5px;margin-bottom:6px;
+}
+.wf-tree{padding:10px 10px}
+.wf-tree ul{list-style:none;margin:0;padding:0}
+/* Макет описывает свои details рамкой и отступом 10 px (`details{border;padding}`),
+   и этот стиль протекал в панель: каждый свёрнутый раздел занимал 50 px вместо 20. */
+.wf-tree details{border:none;padding:0}
+/* Два уровня складывания. 38 страниц не помещаются в панель ни при каком шрифте:
+   свёрнутыми состояниями удалось дойти до 936 px при доступных 852. Поэтому
+   складываются и разделы — открыт тот, в котором стоишь. Так вся структура продукта
+   видна целиком, а не наполовину, и до любого состояния два щелчка. */
+.wf-tree summary.sec{
+  font-size:10px;letter-spacing:.06em;color:var(--muted);font-weight:600;
+  padding:2px 4px;border-bottom:1px solid var(--line);cursor:pointer;
+}
+.wf-tree summary.sec:hover{background:var(--block)}
+.wf-tree details.sec-d{margin:0 0 5px}
+.wf-tree details.sec-d > .scr{margin-left:4px}
+.wf-tree .sec{margin:8px 0 2px}
+.wf-tree details.scr{margin:1px 0}
+/* Имена экранов длинные («Выгрузка и удаление данных») и в 246 px переносятся на две-три
+   строки. При прежнем размере одна свёрнутая строка занимала 48–67 px, и семь экранов
+   съедали панель целиком. Переименовывать нельзя — имена те же, что в sitemap.md, —
+   поэтому уменьшен шрифт и интерлиньяж. */
+.wf-tree summary{
+  font-weight:600;color:var(--ink);padding:2px 4px 2px 6px;cursor:pointer;
+  font-size:11.5px;line-height:1.25;
+}
+.wf-tree summary .cnt{float:right;margin-left:6px}
+.wf-tree summary:hover{background:var(--block)}
+.wf-tree summary .cnt{font-weight:400;color:var(--muted);font-size:11px}
+.wf-tree details[open] > summary{border-bottom:1px dotted var(--line)}
+.wf-tree .st{padding-left:20px}
+.wf-tree a{display:block;color:var(--ink);text-decoration:none;padding:2px 5px;line-height:1.3}
+.wf-tree a:hover{background:var(--block);text-decoration:underline}
+.wf-tree a[aria-current]{background:var(--block);font-weight:600}
+.wf-tree a[aria-current]::before{content:"› ";color:var(--muted)}
+.wf-tree .all{float:right;font-weight:400;letter-spacing:0;text-transform:none;
+  color:var(--muted);text-decoration:underline;display:inline}
+.wf-tree .all:hover{color:var(--ink);background:none}
+.wf-tree .todo{display:block;padding:3px 5px;color:var(--muted)}
+.wf-tree .todo::after{content:" · ещё нет";font-size:11px}
+.wf-tree .later{display:block;padding:3px 5px 3px 8px;color:var(--muted)}
+.wf-tree .later::after{content:" · другой шаг";font-size:11px}
+.wf-main{flex:0 0 auto;max-width:100%}
+
+/* полоса пути */
+.wf-path{border:1px solid var(--line);padding:7px 8px;margin:0 0 8px}
+.wf-path > b{display:block;font-size:10.5px;letter-spacing:.06em;color:var(--muted);margin-bottom:7px}
+/* Шаги стоят в строку: столбцом полоса съедала 260 px панели, и дерево экранов
+   начиналось ниже края окна — то есть его не было видно. */
+.wf-path ol{list-style:none;margin:0;padding:0;display:flex;flex-wrap:wrap;gap:3px}
+.wf-path li{margin:0}
+.wf-path a{display:block;padding:3px 5px;color:var(--ink);text-decoration:none;font-size:11.5px;
+  border:1px solid var(--line)}
+.wf-path a:hover{background:var(--block)}
+.wf-path .n{font-size:10px;color:var(--muted);margin-right:3px}
+.wf-path li.here > a{background:var(--block);font-weight:600;border-color:var(--ink)}
+.wf-path li.here .n{color:var(--ink);font-weight:600}
+.wf-steps{display:flex;gap:5px;margin:6px 0 0;border-top:1px dotted var(--line);padding-top:6px}
+.wf-steps a{flex:1;border:1px solid var(--line);text-align:center;font-size:11px;padding:4px 3px}
+.wf-here{margin:5px 0 0;font-size:10.5px;line-height:1.3;color:var(--muted)}
+.wf-here code{font-size:10px}
+
+/* Узкое окно: страница и есть телефон.
+   Панель шириной 246 px и отступ 286 px в окне шириной 440 не оставляют месту макета
+   ничего — именно это и происходило в плитках обзорной страницы: видна была панель,
+   а не экран. Поэтому при ширине до 760 px панель и аннотация убираются, и остаётся
+   ровно макет. На обычном окне обе на месте. */
+@media (max-width:760px){
+  /* Ровно padding:0, а не только слева: боковые 8 px обрезали макет по 8 px с каждой
+     стороны — в плитке это было видно как срезанные края. */
+  body{padding:0 !important}
+  .wf-tree,.wf-note{display:none}
+  .wf-main{max-width:none}
+}
+
+/* прототип = рамка устройства: фиксированная высота и своя прокрутка внутри */
+.screen{height:var(--h);overflow-y:auto}
+body:has(#vw-desktop:checked) .screen{height:auto;overflow-y:visible}
+
+/* переключатель ширины: :has() меняет --w, скрипты не нужны */
+.wf-vw{border:1px solid var(--line);padding:7px 8px;margin:0 0 8px}
+.wf-vw > b{
+  display:block;font-size:10.5px;letter-spacing:.06em;color:var(--muted);margin-bottom:6px;
+}
+.wf-vw{display:flex;flex-wrap:wrap;gap:4px 10px;align-items:center}
+.wf-vw > b{flex:1 0 100%;margin-bottom:1px;font-size:10px}
+.wf-vw label{display:flex;gap:5px;align-items:center;font-size:11.5px;cursor:pointer}
+.wf-vw input{width:13px;height:13px;margin:0}
+.wf-desk{flex:1 0 100%}
+.wf-desk{display:none;margin:7px 0 0;font-size:11.5px;line-height:1.35;color:var(--muted)}
+body:has(#vw-desktop:checked){--w:1024px}
+body:has(#vw-desktop:checked) .wf-desk{display:block}
+/* max-width:100% обрезает блок ДО применения zoom, из-за чего он прижимается
+   влево вместо центра. В десктопном режиме ограничение снимается. */
+body:has(#vw-desktop:checked) .wf-main{max-width:none}
+
+/* Десктопный макет 1024 + панель 246 требуют ~1340 px. В окне поуже макет
+   масштабируется, как предпросмотр в дизайн-инструменте, — панель остаётся
+   слева, а не уезжает под макет. */
+@media (max-width:1360px){
+  body:has(#vw-desktop:checked) .wf-main{zoom:.74}
+}
+@media (max-width:1120px){
+  body:has(#vw-desktop:checked) .wf-main{zoom:.58}
+}
+</style>
+<!--/WF-NAV-CSS-->
+</head>
+<body>
+
+<!--WF-NAV-->
+<nav class="wf-tree" aria-label="Структура вайрфреймов">
+<form class="wf-vw">
+  <b>ШИРИНА МАКЕТА</b>
+  <label><input type="radio" name="vw" id="vw-mobile" checked> мобильный · 440</label>
+  <label><input type="radio" name="vw" id="vw-desktop"> десктоп · 1024</label>
+  <p class="wf-desk">Раскладка под десктоп ещё не спроектирована: структура та же, размещение зон изменится (<code>CLAUDE.md</code>).</p>
+</form>
+<nav class="wf-path" aria-label="Путь по потоку неделя и оплата">
+  <b>ПУТЬ · НЕДЕЛЯ И ОПЛАТА</b>
+  <ol>
+    <li><a href="week-loading.html"><span class="n">1</span> Ожидание</a></li>
+    <li><a href="week-locked.html"><span class="n">2</span> Пейволл</a></li>
+    <li><a href="access.html"><span class="n">3</span> Доступ</a></li>
+    <li><a href="payment.html"><span class="n">4</span> Оплата</a></li>
+    <li class="here"><a href="week.html" aria-current="step"><span class="n">5</span> Объяснение</a></li>
+  </ol>
+  <p class="wf-steps"><a class="step-prev" href="payment.html">← шаг 4 · Оплата</a></p>
+  <p class="wf-here">Шаг 5 из 5 · узел <code>Shown</code></p>
+</nav>
+  <b>ЭКРАНЫ ПРОДУКТА · 7 <a class="all" href="../index.html">все 38 одним листом</a></b>
+  <details class="sec-d">
+    <summary class="sec">УТРО <span class="cnt">6</span></summary>
+  <details class="scr">
+    <summary>Сегодня <span class="cnt">6</span></summary>
+    <ul>
+      <li class="st"><a href="today.html">успех · обычный день</a></li>
+      <li class="st"><a href="today-heavy.html">успех · тяжёлый день</a></li>
+      <li class="st"><a href="today-nocalendar.html">успех · без календаря</a></li>
+      <li class="st"><a href="today-empty.html">пусто · встреч нет</a></li>
+      <li class="st"><a href="today-error.html">ошибка · не собрался</a></li>
+      <li class="st"><a href="today-loading.html">ожидание · собираем</a></li>
+    </ul>
+  </details>
+  </details>
+  <details class="sec-d" open>
+    <summary class="sec">НЕДЕЛЯ <span class="cnt">7</span></summary>
+  <details class="scr" open>
+    <summary>Недельное объяснение <span class="cnt">7</span></summary>
+    <ul>
+      <li class="st"><a href="week.html">успех · связи показаны</a></li>
+      <li class="st"><a href="week-locked.html">успех · закрыто оплатой</a></li>
+      <li class="st"><a href="week-known.html">успех · «и так знал»</a></li>
+      <li class="st"><a href="week-few.html">пусто · дней мало</a></li>
+      <li class="st"><a href="week-none.html">пусто · связей нет</a></li>
+      <li class="st"><a href="week-error.html" aria-current="page">ошибка · не собрался</a></li>
+      <li class="st"><a href="week-loading.html">ожидание · ищем связи</a></li>
+    </ul>
+  </details>
+  </details>
+  <details class="sec-d">
+    <summary class="sec">ГРАНИЦА <span class="cnt">13</span></summary>
+  <details class="scr">
+    <summary>Что я разрешил <span class="cnt">6</span></summary>
+    <ul>
+      <li class="st"><a href="permissions.html">успех · подключено</a></li>
+      <li class="st"><a href="permissions-empty.html">пусто · ничего нет</a></li>
+      <li class="st"><a href="permissions-unclear.html">пусто · причина неясна</a></li>
+      <li class="st"><a href="permissions-revoked.html">согласие отозвано</a></li>
+      <li class="st"><a href="permissions-error.html">ошибка · доступ не выдан</a></li>
+      <li class="st"><a href="permissions-loading.html">ожидание · провайдер</a></li>
+    </ul>
+  </details>
+  <details class="scr">
+    <summary>Доступ <span class="cnt">6</span></summary>
+    <ul>
+      <li class="st"><a href="access.html">успех · цена</a></li>
+      <li class="st"><a href="access-paid.html">успех · оплачено</a></li>
+      <li class="st"><a href="access-soon.html">пусто · объяснения нет</a></li>
+      <li class="st"><a href="access-error.html">ошибка · не прошла</a></li>
+      <li class="st"><a href="access-loading.html">ожидание · обрабатываем</a></li>
+      <li class="st"><a href="access-empty.html">пусто · заглушка</a></li>
+    </ul>
+  </details>
+  <details class="scr">
+    <summary>Экран оплаты · внешний <span class="cnt">1</span></summary>
+    <ul>
+      <li class="st"><a href="payment.html">граница · чужой экран</a></li>
+    </ul>
+  </details>
+  </details>
+  <details class="sec-d">
+    <summary class="sec">ОБЯЗАННОСТЬ <span class="cnt">8</span></summary>
+  <details class="scr">
+    <summary>Выгрузка и удаление данных <span class="cnt">8</span></summary>
+    <ul>
+      <li class="st"><a href="export.html">успех · забрать или стереть</a></li>
+      <li class="st"><a href="export-done.html">успех · файл на руках</a></li>
+      <li class="st"><a href="export-confirm.html">подтверждение · удалить</a></li>
+      <li class="st"><a href="export-loading.html">ожидание · готовим файл</a></li>
+      <li class="st"><a href="export-deleting.html">ожидание · удаляем</a></li>
+      <li class="st"><a href="export-error.html">ошибка · не собралась</a></li>
+      <li class="st"><a href="export-gone.html">конец · аккаунта нет</a></li>
+      <li class="st"><a href="export-empty.html">пусто · заглушка</a></li>
+    </ul>
+  </details>
+  </details>
+  <details class="sec-d">
+    <summary class="sec">ВХОД <span class="cnt">4</span></summary>
+  <details class="scr">
+    <summary>Зачем это и что я разрешаю <span class="cnt">4</span></summary>
+    <ul>
+      <li class="st"><a href="consent.html">успех · согласие дано</a></li>
+      <li class="st"><a href="consent-refused.html">отказ · что перестанет</a></li>
+      <li class="st"><a href="consent-empty.html">пусто · заглушка</a></li>
+      <li class="st"><a href="consent-loading.html">ожидание · заглушка</a></li>
+    </ul>
+  </details>
+  </details>
+</nav>
+<!--/WF-NAV-->
+
+<div class="wf-main">
+
+<p class="wf-note">
+  <b>ВАЙРФРЕЙМ</b>
+  Экран <code>Недельное объяснение</code> · состояние <b style="display:inline">ошибка · анализ не собрался</b><br>
+  Работа: <b style='display:inline'>R4</b> — увидеть, что отличает хорошие дни от плохих · <b style='display:inline'>R5</b> — понять, стоит ли это времени и денег · <b style='display:inline'>S1</b> — так живут и другие, дело не в несостоятельности · <b style='display:inline'>E1</b> — опора, а не вердикт · <b style='display:inline'>Г5</b> — понимать, чему именно доверяю<br>
+  Узел потока: <code>ErrAnalyze</code> в «R4 · понять, что влияет на мои дни» (<code>flows.md</code>)<br>
+  Закрывает шаг: шаг не закрыт: дни накоплены, а объяснения нет<br>
+  Выход: «Поискать заново» → <code>week-loading.html</code> · «Вернуться к списку на сегодня» → <code>today.html</code><br>
+  <span class="wf-states">Состояния этого экрана:
+    <a href="week.html">успех · связи показаны</a>
+    <a href="week-locked.html">успех · закрыто оплатой</a>
+    <a href="week-known.html">успех · «и так знал»</a>
+    <a href="week-few.html">пусто · дней мало</a>
+    <a href="week-none.html">пусто · связей нет</a>
+    <a href="week-error.html" aria-current="page">ошибка · не собрался</a>
+    <a href="week-loading.html">ожидание · ищем связи</a>
+  </span>
+</p>
+
+<div class="screen">
+
+  <header data-zone="Шапка" data-action="Сориентировать: какая неделя и на скольких днях построена">
+    <h1>Неделя</h1>
+    <p class="sub">15–21 сентября · 7 дней из 7</p>
+    <p class="sub">Объяснение не собралось</p>
+  </header>
+
+  <main>
+    <section data-zone="Найденные связи" data-action="Увидеть, чем хорошие дни отличались от плохих">
+      <h2>Не получилось собрать объяснение</h2>
+      <p>Поиск связей прервался. Ваши отметки и занятость календаря на месте —
+         не потерялось ничего.</p>
+      <p class="sub">Если ждать не хочется, сегодняшний список никуда не делся.</p>
+      <p><a class="act" href="today.html">Вернуться к списку на сегодня</a></p>
+  </section>
+
+    <section data-zone="Строка сравнения" data-action="Снять личную вину: так живут не только вы">
+      <h2>Не только у вас</h2>
+      <p>Дни с восемью и более встречами выжимают 76% людей.</p>
+      <p class="sub">Atlassian, опрос 5 000 человек — дело не в вас лично.</p>
+  </section>
+  </main>
+
+  <footer data-zone="Действие" data-action="Ответить на объяснение или уйти дальше по потоку">
+    <p><a class="act" href="week-loading.html">Поискать заново</a></p>
+    <p class="sub">Обе ветки развилки «повторить?» из <code>flows.md</code>: искать
+       заново или уйти в другой раздел.</p>
+  </footer>
+
+  <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">
+    <ul>
+      <li><a href="today.html">Сегодня</a></li>
+      <li><span class="nav-here" aria-current="page">Неделя</span></li>
+      <li><a href="permissions.html">Моё</a></li>
+    </ul>
+  </nav>
+
+</div>
+
+</div>
+
+</body>
+</html>

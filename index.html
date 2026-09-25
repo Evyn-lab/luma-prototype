@@ -1,0 +1,238 @@
+<!doctype html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="robots" content="noindex">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Прототип Luma · все страницы</title>
+<style>
+:root{
+  --page:#fff; --ink:#1a1a1a; --muted:#6e6e6e; --line:#c9c9c9; --block:#ededed;
+  --sans:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Helvetica,Arial,sans-serif;
+}
+*{box-sizing:border-box}
+body{margin:0;background:var(--page);color:var(--ink);font:14px/1.5 var(--sans);padding:26px 22px 60px}
+h1{font-size:23px;margin:0 0 6px}
+.lead{color:var(--muted);margin:0 0 4px;max-width:78ch}
+.lead code{background:var(--block);padding:1px 4px}
+h2{font-size:12px;letter-spacing:.08em;color:var(--muted);margin:30px 0 4px;
+   border-bottom:1px solid var(--line);padding-bottom:5px}
+h3{font-size:15px;margin:16px 0 2px}
+h3 .cnt{font-weight:400;font-size:12px;color:var(--muted);margin-left:6px}
+h3 .flow{font-weight:400;font-size:11.5px;color:var(--muted);margin-left:8px}
+.row{display:flex;flex-wrap:wrap;gap:18px;margin:10px 0 0}
+figure{margin:0;width:176px}
+figcaption{font-size:11.5px;line-height:1.35;margin-top:5px}
+figcaption a{color:var(--ink);text-decoration:none;border-bottom:1px solid var(--line)}
+figcaption a:hover{background:var(--block)}
+figcaption .st{display:block;color:var(--muted);font-size:11px;margin-top:1px}
+.frame{width:176px;height:382px;border:1px solid var(--ink);overflow:hidden;
+       position:relative;background:var(--page)}
+.frame iframe{width:440px;height:956px;border:0;position:absolute;top:0;left:0;
+              transform:scale(0.4);transform-origin:0 0}
+.frame .cover{position:absolute;inset:0}          /* клик по плитке = переход */
+.miss{display:flex;align-items:center;justify-content:center;height:100%;
+      color:var(--muted);font-size:12px;text-align:center;padding:12px}
+.note{margin:26px 0 0;padding:12px 14px;border:1px solid var(--line);color:var(--muted);
+      font-size:12.5px;max-width:86ch}
+</style>
+</head>
+<body>
+
+<h1>Прототип Luma · 38 страниц</h1>
+<p class="lead">Все состояния всех семи экранов <code>sitemap.md</code> на одном листе.
+   Клик по макету открывает его целиком — с панелью, переключателем состояний и полосой
+   пути по потоку.</p>
+<p class="lead">Собрано скриптом <code>tools/prototype.py</code> из того же дерева, что и
+   панель (<code>wireframes/_nav.py</code>): обзор не может разойтись с прототипом.</p>
+
+<div class="note">
+  <b>Потоки продукта</b>
+  <ul><li><b>ГЛАВНЫЙ ПОТОК</b> — Вход → Ожидание → Список → Границы</li><li><b>НЕДЕЛЯ И ОПЛАТА</b> — Ожидание → Пейволл → Доступ → Оплата → Объяснение</li><li><b>ГРАНИЦА И ДАННЫЕ</b> — Границы → Забрать или стереть → Аккаунта нет</li></ul>
+</div>
+
+<h2>УТРО</h2>
+<h3>Сегодня <span class="cnt">6</span><span class="flow">поток · главный поток</span></h3>
+<div class="row">
+  <figure>
+    <div class="frame"><iframe src="wireframes/today.html" loading="lazy" title="успех · обычный день"></iframe><a class="cover" href="wireframes/today.html" aria-label="Открыть успех · обычный день"></a></div>
+    <figcaption><a href="wireframes/today.html">today.html</a><span class="st">успех · обычный день</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/today-heavy.html" loading="lazy" title="успех · тяжёлый день"></iframe><a class="cover" href="wireframes/today-heavy.html" aria-label="Открыть успех · тяжёлый день"></a></div>
+    <figcaption><a href="wireframes/today-heavy.html">today-heavy.html</a><span class="st">успех · тяжёлый день</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/today-nocalendar.html" loading="lazy" title="успех · без календаря"></iframe><a class="cover" href="wireframes/today-nocalendar.html" aria-label="Открыть успех · без календаря"></a></div>
+    <figcaption><a href="wireframes/today-nocalendar.html">today-nocalendar.html</a><span class="st">успех · без календаря</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/today-empty.html" loading="lazy" title="пусто · встреч нет"></iframe><a class="cover" href="wireframes/today-empty.html" aria-label="Открыть пусто · встреч нет"></a></div>
+    <figcaption><a href="wireframes/today-empty.html">today-empty.html</a><span class="st">пусто · встреч нет</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/today-error.html" loading="lazy" title="ошибка · не собрался"></iframe><a class="cover" href="wireframes/today-error.html" aria-label="Открыть ошибка · не собрался"></a></div>
+    <figcaption><a href="wireframes/today-error.html">today-error.html</a><span class="st">ошибка · не собрался</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/today-loading.html" loading="lazy" title="ожидание · собираем"></iframe><a class="cover" href="wireframes/today-loading.html" aria-label="Открыть ожидание · собираем"></a></div>
+    <figcaption><a href="wireframes/today-loading.html">today-loading.html</a><span class="st">ожидание · собираем</span></figcaption>
+  </figure>
+</div>
+<h2>НЕДЕЛЯ</h2>
+<h3>Недельное объяснение <span class="cnt">7</span><span class="flow">поток · неделя и оплата</span></h3>
+<div class="row">
+  <figure>
+    <div class="frame"><iframe src="wireframes/week.html" loading="lazy" title="успех · связи показаны"></iframe><a class="cover" href="wireframes/week.html" aria-label="Открыть успех · связи показаны"></a></div>
+    <figcaption><a href="wireframes/week.html">week.html</a><span class="st">успех · связи показаны</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/week-locked.html" loading="lazy" title="успех · закрыто оплатой"></iframe><a class="cover" href="wireframes/week-locked.html" aria-label="Открыть успех · закрыто оплатой"></a></div>
+    <figcaption><a href="wireframes/week-locked.html">week-locked.html</a><span class="st">успех · закрыто оплатой</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/week-known.html" loading="lazy" title="успех · «и так знал»"></iframe><a class="cover" href="wireframes/week-known.html" aria-label="Открыть успех · «и так знал»"></a></div>
+    <figcaption><a href="wireframes/week-known.html">week-known.html</a><span class="st">успех · «и так знал»</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/week-few.html" loading="lazy" title="пусто · дней мало"></iframe><a class="cover" href="wireframes/week-few.html" aria-label="Открыть пусто · дней мало"></a></div>
+    <figcaption><a href="wireframes/week-few.html">week-few.html</a><span class="st">пусто · дней мало</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/week-none.html" loading="lazy" title="пусто · связей нет"></iframe><a class="cover" href="wireframes/week-none.html" aria-label="Открыть пусто · связей нет"></a></div>
+    <figcaption><a href="wireframes/week-none.html">week-none.html</a><span class="st">пусто · связей нет</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/week-error.html" loading="lazy" title="ошибка · не собрался"></iframe><a class="cover" href="wireframes/week-error.html" aria-label="Открыть ошибка · не собрался"></a></div>
+    <figcaption><a href="wireframes/week-error.html">week-error.html</a><span class="st">ошибка · не собрался</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/week-loading.html" loading="lazy" title="ожидание · ищем связи"></iframe><a class="cover" href="wireframes/week-loading.html" aria-label="Открыть ожидание · ищем связи"></a></div>
+    <figcaption><a href="wireframes/week-loading.html">week-loading.html</a><span class="st">ожидание · ищем связи</span></figcaption>
+  </figure>
+</div>
+<h2>ГРАНИЦА</h2>
+<h3>Что я разрешил <span class="cnt">6</span><span class="flow">поток · главный поток</span></h3>
+<div class="row">
+  <figure>
+    <div class="frame"><iframe src="wireframes/permissions.html" loading="lazy" title="успех · подключено"></iframe><a class="cover" href="wireframes/permissions.html" aria-label="Открыть успех · подключено"></a></div>
+    <figcaption><a href="wireframes/permissions.html">permissions.html</a><span class="st">успех · подключено</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/permissions-empty.html" loading="lazy" title="пусто · ничего нет"></iframe><a class="cover" href="wireframes/permissions-empty.html" aria-label="Открыть пусто · ничего нет"></a></div>
+    <figcaption><a href="wireframes/permissions-empty.html">permissions-empty.html</a><span class="st">пусто · ничего нет</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/permissions-unclear.html" loading="lazy" title="пусто · причина неясна"></iframe><a class="cover" href="wireframes/permissions-unclear.html" aria-label="Открыть пусто · причина неясна"></a></div>
+    <figcaption><a href="wireframes/permissions-unclear.html">permissions-unclear.html</a><span class="st">пусто · причина неясна</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/permissions-revoked.html" loading="lazy" title="согласие отозвано"></iframe><a class="cover" href="wireframes/permissions-revoked.html" aria-label="Открыть согласие отозвано"></a></div>
+    <figcaption><a href="wireframes/permissions-revoked.html">permissions-revoked.html</a><span class="st">согласие отозвано</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/permissions-error.html" loading="lazy" title="ошибка · доступ не выдан"></iframe><a class="cover" href="wireframes/permissions-error.html" aria-label="Открыть ошибка · доступ не выдан"></a></div>
+    <figcaption><a href="wireframes/permissions-error.html">permissions-error.html</a><span class="st">ошибка · доступ не выдан</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/permissions-loading.html" loading="lazy" title="ожидание · провайдер"></iframe><a class="cover" href="wireframes/permissions-loading.html" aria-label="Открыть ожидание · провайдер"></a></div>
+    <figcaption><a href="wireframes/permissions-loading.html">permissions-loading.html</a><span class="st">ожидание · провайдер</span></figcaption>
+  </figure>
+</div>
+<h3>Доступ <span class="cnt">6</span><span class="flow">поток · неделя и оплата</span></h3>
+<div class="row">
+  <figure>
+    <div class="frame"><iframe src="wireframes/access.html" loading="lazy" title="успех · цена"></iframe><a class="cover" href="wireframes/access.html" aria-label="Открыть успех · цена"></a></div>
+    <figcaption><a href="wireframes/access.html">access.html</a><span class="st">успех · цена</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/access-paid.html" loading="lazy" title="успех · оплачено"></iframe><a class="cover" href="wireframes/access-paid.html" aria-label="Открыть успех · оплачено"></a></div>
+    <figcaption><a href="wireframes/access-paid.html">access-paid.html</a><span class="st">успех · оплачено</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/access-soon.html" loading="lazy" title="пусто · объяснения нет"></iframe><a class="cover" href="wireframes/access-soon.html" aria-label="Открыть пусто · объяснения нет"></a></div>
+    <figcaption><a href="wireframes/access-soon.html">access-soon.html</a><span class="st">пусто · объяснения нет</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/access-error.html" loading="lazy" title="ошибка · не прошла"></iframe><a class="cover" href="wireframes/access-error.html" aria-label="Открыть ошибка · не прошла"></a></div>
+    <figcaption><a href="wireframes/access-error.html">access-error.html</a><span class="st">ошибка · не прошла</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/access-loading.html" loading="lazy" title="ожидание · обрабатываем"></iframe><a class="cover" href="wireframes/access-loading.html" aria-label="Открыть ожидание · обрабатываем"></a></div>
+    <figcaption><a href="wireframes/access-loading.html">access-loading.html</a><span class="st">ожидание · обрабатываем</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/access-empty.html" loading="lazy" title="пусто · заглушка"></iframe><a class="cover" href="wireframes/access-empty.html" aria-label="Открыть пусто · заглушка"></a></div>
+    <figcaption><a href="wireframes/access-empty.html">access-empty.html</a><span class="st">пусто · заглушка</span></figcaption>
+  </figure>
+</div>
+<h3>Экран оплаты · внешний <span class="cnt">1</span><span class="flow">поток · неделя и оплата</span></h3>
+<div class="row">
+  <figure>
+    <div class="frame"><iframe src="wireframes/payment.html" loading="lazy" title="граница · чужой экран"></iframe><a class="cover" href="wireframes/payment.html" aria-label="Открыть граница · чужой экран"></a></div>
+    <figcaption><a href="wireframes/payment.html">payment.html</a><span class="st">граница · чужой экран</span></figcaption>
+  </figure>
+</div>
+<h2>ОБЯЗАННОСТЬ</h2>
+<h3>Выгрузка и удаление данных <span class="cnt">8</span><span class="flow">поток · граница и данные</span></h3>
+<div class="row">
+  <figure>
+    <div class="frame"><iframe src="wireframes/export.html" loading="lazy" title="успех · забрать или стереть"></iframe><a class="cover" href="wireframes/export.html" aria-label="Открыть успех · забрать или стереть"></a></div>
+    <figcaption><a href="wireframes/export.html">export.html</a><span class="st">успех · забрать или стереть</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/export-done.html" loading="lazy" title="успех · файл на руках"></iframe><a class="cover" href="wireframes/export-done.html" aria-label="Открыть успех · файл на руках"></a></div>
+    <figcaption><a href="wireframes/export-done.html">export-done.html</a><span class="st">успех · файл на руках</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/export-confirm.html" loading="lazy" title="подтверждение · удалить"></iframe><a class="cover" href="wireframes/export-confirm.html" aria-label="Открыть подтверждение · удалить"></a></div>
+    <figcaption><a href="wireframes/export-confirm.html">export-confirm.html</a><span class="st">подтверждение · удалить</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/export-loading.html" loading="lazy" title="ожидание · готовим файл"></iframe><a class="cover" href="wireframes/export-loading.html" aria-label="Открыть ожидание · готовим файл"></a></div>
+    <figcaption><a href="wireframes/export-loading.html">export-loading.html</a><span class="st">ожидание · готовим файл</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/export-deleting.html" loading="lazy" title="ожидание · удаляем"></iframe><a class="cover" href="wireframes/export-deleting.html" aria-label="Открыть ожидание · удаляем"></a></div>
+    <figcaption><a href="wireframes/export-deleting.html">export-deleting.html</a><span class="st">ожидание · удаляем</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/export-error.html" loading="lazy" title="ошибка · не собралась"></iframe><a class="cover" href="wireframes/export-error.html" aria-label="Открыть ошибка · не собралась"></a></div>
+    <figcaption><a href="wireframes/export-error.html">export-error.html</a><span class="st">ошибка · не собралась</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/export-gone.html" loading="lazy" title="конец · аккаунта нет"></iframe><a class="cover" href="wireframes/export-gone.html" aria-label="Открыть конец · аккаунта нет"></a></div>
+    <figcaption><a href="wireframes/export-gone.html">export-gone.html</a><span class="st">конец · аккаунта нет</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/export-empty.html" loading="lazy" title="пусто · заглушка"></iframe><a class="cover" href="wireframes/export-empty.html" aria-label="Открыть пусто · заглушка"></a></div>
+    <figcaption><a href="wireframes/export-empty.html">export-empty.html</a><span class="st">пусто · заглушка</span></figcaption>
+  </figure>
+</div>
+<h2>ВХОД</h2>
+<h3>Зачем это и что я разрешаю <span class="cnt">4</span><span class="flow">поток · главный поток</span></h3>
+<div class="row">
+  <figure>
+    <div class="frame"><iframe src="wireframes/consent.html" loading="lazy" title="успех · согласие дано"></iframe><a class="cover" href="wireframes/consent.html" aria-label="Открыть успех · согласие дано"></a></div>
+    <figcaption><a href="wireframes/consent.html">consent.html</a><span class="st">успех · согласие дано</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/consent-refused.html" loading="lazy" title="отказ · что перестанет"></iframe><a class="cover" href="wireframes/consent-refused.html" aria-label="Открыть отказ · что перестанет"></a></div>
+    <figcaption><a href="wireframes/consent-refused.html">consent-refused.html</a><span class="st">отказ · что перестанет</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/consent-empty.html" loading="lazy" title="пусто · заглушка"></iframe><a class="cover" href="wireframes/consent-empty.html" aria-label="Открыть пусто · заглушка"></a></div>
+    <figcaption><a href="wireframes/consent-empty.html">consent-empty.html</a><span class="st">пусто · заглушка</span></figcaption>
+  </figure>
+  <figure>
+    <div class="frame"><iframe src="wireframes/consent-loading.html" loading="lazy" title="ожидание · заглушка"></iframe><a class="cover" href="wireframes/consent-loading.html" aria-label="Открыть ожидание · заглушка"></a></div>
+    <figcaption><a href="wireframes/consent-loading.html">consent-loading.html</a><span class="st">ожидание · заглушка</span></figcaption>
+  </figure>
+</div>
+
+<div class="note">Макеты уменьшены до 40%: это тот же экран 440 × 956, а не другая
+   раскладка. Серый — правило вайрфреймов (<code>wireframes/_conventions.md</code> §2):
+   цвет появится на этапе токенов, не раньше.</div>
+
+</body>
+</html>
