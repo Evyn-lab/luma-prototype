@@ -359,7 +359,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   Экран <code>Доступ</code> · состояние <b style="display:inline">успех · цена и что даёт подписка</b><br>
   Работа: <b style='display:inline'>R5</b> — понять, работает ли это для меня, не потратив недели и деньги на ещё одно разочарование · участвует <b style='display:inline'>R4</b>: доступ существует только ради недельного объяснения<br>
   Узел потока: <code>Access</code> в «R5 · решить, стоит ли это моего времени и денег» (<code>flows.md</code>)<br>
-  Закрывает шаг: решение «стоит ли это моих денег» можно принять: цена названа, видно, что даёт подписка и что остаётся бесплатным<br>
+  Закрывает шаг: решение «стоит ли это моих денег» можно принять целиком: названо, за что платят, период, способ оплаты и что остаётся бесплатным<br>
   Выход: «Оформить подписку» → <code>payment.html</code> · «Остаться на бесплатном» → <code>today.html</code> · «Объяснения ещё нет» → <code>access-soon.html</code><br>
   <span class="wf-states">Состояния этого экрана:
     <a href="access.html" aria-current="page">успех · цена</a>
@@ -381,12 +381,14 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   </header>
 
   <main data-zone="Цена и что даёт подписка" data-action="Решить, стоит ли это моих денег">
-    <h2>Что открывает подписка</h2>
-    <p>Что отличает ваши хорошие дни от плохих.</p>
-    <p class="sub">Чем дольше вы отмечаетесь, тем больше в нём вашего.</p>
+    <h2>За что вы платите</h2>
+    <p>За недельное объяснение: что именно отличает ваши хорошие дни от плохих,
+       посчитанное по вашим отметкам и загрузке календаря.</p>
+    <p class="sub">Оно пересобирается каждую неделю и точнее с каждой следующей —
+       за один раз такого не получить, поэтому и подписка, а не разовая покупка.</p>
     <form>
       <fieldset>
-        <legend>Период подписки</legend>
+        <legend>Период оплаты</legend>
         <ul>
           <li><article><label>
             <input type="radio" name="period" checked>
@@ -400,7 +402,27 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
           </label></article></li>
         </ul>
       </fieldset>
+      <fieldset>
+        <legend>Способ оплаты</legend>
+        <ul>
+          <li><article><label>
+            <input type="radio" name="method" checked>
+            <span class="item-text">Банковская карта</span>
+          </label></article></li>
+          <li><article><label>
+            <input type="radio" name="method">
+            <span class="item-text">Apple Pay</span>
+          </label></article></li>
+          <li><article><label>
+            <input type="radio" name="method">
+            <span class="item-text">PayPal</span>
+          </label></article></li>
+        </ul>
+      </fieldset>
     </form>
+    <p class="sub">Набор способов не выбран по ресёрчу <b style="display:inline">[?]</b>:
+       это предположение для европейского рынка. Сами платёжные данные вводятся у
+       провайдера и через Luma не проходят.</p>
   </main>
 
   <section data-zone="Что остаётся бесплатным" data-action="Убедиться, что ежедневный список не отбирают">
