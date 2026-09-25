@@ -86,6 +86,12 @@ footer{border-bottom:none}
   padding:9px 14px;margin:6px 8px 0 0;color:var(--ink);text-decoration:none;font-size:14px;
 }
 .act:hover{text-decoration:underline}
+/* Ссылка внутри макета — серая и подчёркнутая.
+   Без этого правила браузер красит её синим, а посещённую фиолетовым: на экране «Моё»
+   так и вышло. Проверка цвета этого не ловит — она читает объявленные значения в файле,
+   а браузерные по умолчанию в файле не написаны. */
+.screen a:not(.act){color:var(--ink); text-decoration:underline}
+.screen a:not(.act):hover{background:var(--block)}
 .act.todo{color:var(--muted);border-style:dashed;background:var(--page)}
 .act.todo::after{content:" · страницы ещё нет";font-size:11px}
 .wf-states{display:block;margin-top:7px;border-top:1px dotted var(--line);padding-top:6px}
@@ -376,41 +382,43 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     <p class="sub">Сохраняем настройку</p>
   </header>
 
-  <main data-zone="Что у меня подключено" data-action="Дойти до разрешений, подписки и своих данных">
+  <main data-zone="Аккаунт и подписка" data-action="Увидеть, кто вы здесь и что у вас открыто">
     <h2>Аккаунт</h2>
-    <p>anna@example.com</p>
+    <ul>
+      <li><article>
+        <span class="item-text">anna@example.com<br>
+          <span class="sub">Подписка активна</span></span>
+        <span class="item-time">Годовая</span>
+      </article></li>
+    </ul>
     <p class="sub">Способ входа не проверен <b style="display:inline">[?]</b></p>
-    <h2>Что впущено и за что вы платите</h2>
-    <p class="sub">Сохранение настройки ничего из этого не меняет: подключения и
-       подписка остаются как были.</p>
+    <h2>Что у вас открыто</h2>
+    <p class="sub">Сохранение настройки ничего здесь не меняет: подписка и подключения
+       остаются как были.</p>
     <ul aria-hidden="true">
       <li><article><span class="ph ph-1"></span></article></li>
-      <li><article><span class="ph ph-2"></span></article></li>
     </ul>
   </main>
 
-  <section data-zone="Что настраивается" data-action="Поменять время вопроса о утре или часовой пояс">
-      <h2>Что настраивается</h2>
+  <section data-zone="Разделы и настройки" data-action="Дойти до границ, денег и своих данных">
+      <h2>Разделы</h2>
+      <p class="sub">Доступны как обычно — сохраняется только настройка.</p>
+      <h2>Настройки</h2>
       <p class="sub">Сохраняем: часовой пояс — Мадрид</p>
       <ul aria-hidden="true">
         <li><article><span class="ph ph-3"></span></article></li>
       </ul>
-      <details>
-        <summary>Чего здесь нет и почему</summary>
-        <p><b style="display:inline">Уведомлений</b> — их в продукте нет вовсе, настраивать
-           нечего. <b style="display:inline">Языка</b> — пока один, локализация позже.
-           <b style="display:inline">Серий и счёта несделанного</b> — продукт не ведёт
-           такой счёт и не заставляет наверстывать (работа Г3).</p>
-      </details>
+      <p class="branches">
+        <a class="act" href="profile.html">Сохранилось</a>
+        <a class="act" href="profile-error.html">Не сохранилось</a>
+      </p>
+      <p class="sub">Обе ветки развилки «сохранилось?» из flows.md. В продукте этот выбор
+         делает не человек.</p>
   </section>
 
-  <footer data-zone="Действие" data-action="Сохранить настройку или выйти из аккаунта">
-    <p class="branches">
-      <a class="act" href="profile.html">Сохранилось</a>
-      <a class="act" href="profile-error.html">Не сохранилось</a>
-    </p>
-    <p class="sub">Обе ветки развилки «сохранилось?» из flows.md. В продукте этот выбор
-       делает не человек.</p>
+  <footer data-zone="Выход" data-action="Выйти из аккаунта, не теряя данные">
+    <p class="sub">Пока настройка сохраняется, выход не предлагаем: ответ придёт через
+       секунду, и уходить посреди записи незачем.</p>
   </footer>
 
   <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">

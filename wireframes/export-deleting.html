@@ -86,6 +86,12 @@ footer{border-bottom:none}
   padding:9px 14px;margin:6px 8px 0 0;color:var(--ink);text-decoration:none;font-size:14px;
 }
 .act:hover{text-decoration:underline}
+/* Ссылка внутри макета — серая и подчёркнутая.
+   Без этого правила браузер красит её синим, а посещённую фиолетовым: на экране «Моё»
+   так и вышло. Проверка цвета этого не ловит — она читает объявленные значения в файле,
+   а браузерные по умолчанию в файле не написаны. */
+.screen a:not(.act){color:var(--ink); text-decoration:underline}
+.screen a:not(.act):hover{background:var(--block)}
 .act.todo{color:var(--muted);border-style:dashed;background:var(--page)}
 .act.todo::after{content:" · страницы ещё нет";font-size:11px}
 .wf-states{display:block;margin-top:7px;border-top:1px dotted var(--line);padding-top:6px}

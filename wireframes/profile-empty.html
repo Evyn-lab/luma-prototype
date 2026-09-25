@@ -86,6 +86,12 @@ footer{border-bottom:none}
   padding:9px 14px;margin:6px 8px 0 0;color:var(--ink);text-decoration:none;font-size:14px;
 }
 .act:hover{text-decoration:underline}
+/* Ссылка внутри макета — серая и подчёркнутая.
+   Без этого правила браузер красит её синим, а посещённую фиолетовым: на экране «Моё»
+   так и вышло. Проверка цвета этого не ловит — она читает объявленные значения в файле,
+   а браузерные по умолчанию в файле не написаны. */
+.screen a:not(.act){color:var(--ink); text-decoration:underline}
+.screen a:not(.act):hover{background:var(--block)}
 .act.todo{color:var(--muted);border-style:dashed;background:var(--page)}
 .act.todo::after{content:" · страницы ещё нет";font-size:11px}
 .wf-states{display:block;margin-top:7px;border-top:1px dotted var(--line);padding-top:6px}
@@ -360,7 +366,7 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
   Работа: <b style='display:inline'>Г1</b> — остаться хозяином границы · <b style='display:inline'>Г5</b> — понимать, чему именно доверяю · <b style='display:inline'>R5</b> — видеть, за что платишь, не заходя в пейволл<br>
   Узел потока: <code>My</code> в «Г1 · остаться хозяином границы» (<code>flows.md</code>)<br>
   Закрывает шаг: управлять пока почти нечем — и сказано, чем это станет<br>
-  Выход: «Подключить календарь» → <code>permissions-empty.html</code> · «Что даёт подписка» → <code>access-soon.html</code><br>
+  Выход: «Что я разрешил» → <code>permissions-empty.html</code> · «Подписка и оплата» → <code>access-soon.html</code> · «Забрать или стереть данные» → <code>export.html</code> · «Выйти из аккаунта» → <code>consent.html</code><br>
   <span class="wf-states">Состояния этого экрана:
     <a href="profile.html">успех · всё подключено</a>
     <a href="profile-empty.html" aria-current="page">пусто · первый день</a>
@@ -376,38 +382,50 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
     <p class="sub">Первый день · подключено пока ничего</p>
   </header>
 
-  <main data-zone="Что у меня подключено" data-action="Дойти до разрешений, подписки и своих данных">
+  <main data-zone="Аккаунт и подписка" data-action="Увидеть, кто вы здесь и что у вас открыто">
     <h2>Аккаунт</h2>
-    <p>anna@example.com</p>
+    <ul>
+      <li><article>
+        <span class="item-text">anna@example.com<br>
+          <span class="sub">Подписки нет</span></span>
+        <span class="item-time">Бесплатно</span>
+      </article></li>
+    </ul>
     <p class="sub">Способ входа не проверен <b style="display:inline">[?]</b></p>
-    <h2>Что впущено и за что вы платите</h2>
-    <p>Пока только отметки о состоянии — их вы разрешили на входе. Календарь не
-       подключён, подписки нет.</p>
-    <p class="sub">Это не пустой экран по ошибке: в первый день управлять правда почти
-       нечем. Ежедневный список уже работает.</p>
-    <p>
-      <a class="act" href="permissions-empty.html">Подключить календарь</a>
-      <a class="act" href="access-soon.html">Что даёт подписка</a>
-    </p>
+    <h2>Что у вас открыто</h2>
+    <p>Ежедневный список — он бесплатен навсегда. Недельное объяснение соберётся,
+       когда накопится неделя наблюдений.</p>
+    <p class="sub">Сегодня первый день: накоплен 1 день из 7
+       <b style="display:inline">[?]</b> — порог предположение, а не проверенное число.</p>
   </main>
 
-  <section data-zone="Что настраивается" data-action="Поменять время вопроса о утре или часовой пояс">
-      <h2>Что настраивается</h2>
-      <form>
-        <fieldset>
-          <legend>Две настройки, и обе нужны, чтобы посчитать день</legend>
-          <ul>
-            <li><article><label>
-              <span class="item-text">Когда спрашивать про утро</span>
-              <span class="item-time">07:30</span>
-            </label></article></li>
-            <li><article><label>
-              <span class="item-text">Часовой пояс</span>
-              <span class="item-time">Мадрид</span>
-            </label></article></li>
-          </ul>
-        </fieldset>
-      </form>
+  <section data-zone="Разделы и настройки" data-action="Дойти до границ, денег и своих данных">
+      <h2>Разделы</h2>
+      <ul>
+        <li><article>
+          <span class="item-text"><a href="permissions-empty.html">Что я разрешил</a><br>
+            <span class="sub">Ничего не подключено — календарь можно добавить</span></span>
+        </article></li>
+        <li><article>
+          <span class="item-text"><a href="access-soon.html">Подписка и оплата</a><br>
+            <span class="sub">Бесплатный тариф · платить пока не за что</span></span>
+        </article></li>
+        <li><article>
+          <span class="item-text"><a href="export.html">Забрать или стереть данные</a><br>
+            <span class="sub">Выгрузить копию или удалить всё</span></span>
+        </article></li>
+      </ul>
+      <h2>Настройки</h2>
+      <ul>
+        <li><article>
+          <span class="item-text">Когда спрашивать про утро</span>
+          <span class="item-time">07:30</span>
+        </article></li>
+        <li><article>
+          <span class="item-text">Часовой пояс</span>
+          <span class="item-time">Мадрид</span>
+        </article></li>
+      </ul>
       <details>
         <summary>Чего здесь нет и почему</summary>
         <p><b style="display:inline">Уведомлений</b> — их в продукте нет вовсе, настраивать
@@ -415,11 +433,13 @@ body:has(#vw-desktop:checked) .wf-main{max-width:none}
            <b style="display:inline">Серий и счёта несделанного</b> — продукт не ведёт
            такой счёт и не заставляет наверстывать (работа Г3).</p>
       </details>
+      <p class="sub">Сохранять пока нечего: настройки стоят по умолчанию, и этого
+         достаточно, чтобы собрать список на сегодня.</p>
   </section>
 
-  <footer data-zone="Действие" data-action="Сохранить настройку или выйти из аккаунта">
-    <p class="sub">Сохранять пока нечего: настройки стоят по умолчанию, и этого
-       достаточно, чтобы собрать список на сегодня.</p>
+  <footer data-zone="Выход" data-action="Выйти из аккаунта, не теряя данные">
+    <p><a class="act" href="consent.html">Выйти из аккаунта</a></p>
+    <p class="sub">Выйти — отметки остаются: вернётесь на то же место.</p>
   </footer>
 
   <nav data-zone="Глобальная навигация" data-action="Перейти в другой раздел">
